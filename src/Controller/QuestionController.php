@@ -7,7 +7,7 @@ use App\Model\QuestionModel;
 
 class QuestionController extends AbstractController
 {
-    
+    #Afficher toutes les questions
     public function index()
     {
 
@@ -21,15 +21,16 @@ class QuestionController extends AbstractController
 
     }
 
+    #Afficher une seule question par l'ID
     public function showQuestion()
     {
         $id = $_GET['id'];
-
-        var_dump($id);
         
         $questionModel = new QuestionModel();
         
         $question = $questionModel->findById($id);
+
+        $question = $question[0];
 
         $this->render('questions/oneQuestion.php', [
             'question' => $question

@@ -1,10 +1,13 @@
-/* Nav */
+
+/* nav */
 
 .logo{
     width: 7em;
 }
 
 /* Fin nav */
+
+/* --------------------------------------------------------- */
 
 /* Page index: toutes les questions */
 
@@ -47,3 +50,24 @@
 
 /* Fin page index */
 
+/* --------------------------------------------------------- */
+
+/* Page une seule question */
+
+.active-amber-textarea.md-form label.active {
+    color: #ffa000;
+}
+.amber-textarea textarea.md-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid #ffa000;
+    box-shadow: 0 1px 0 0 #ffa000;
+}
+.amber-textarea.md-form .prefix.active {
+    color: #ffa000;
+}
+.active-amber-textarea.md-form textarea.md-textarea:focus:not([readonly])+label {
+    color: #ffa000;
+}
+
+/* Fin page une seule question */
+
+/* --------------------------------------------------------- */

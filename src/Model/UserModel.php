@@ -80,6 +80,26 @@ class UserModel
         return $this->pdo->lastInsertId();
     }
 
+    public function login($email, $password)
+    {
+        $sql = 'SELECT
+                `email`
+                ,`password`
+                ,`id`
+                FROM ' . self::TABLE_NAME . '
+                WHERE email = "'. $email. '" AND password = "'. $password . '"';
+        
+        $pdoStatement = $this->pdo->query($sql);
+        
+        $result = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
+        
+        if (!$result) {
+            return false;
+        }
+
+        return $result;
+    }
+
 
 
     /**

@@ -1,10 +1,27 @@
 <?php
 
+session_start();
 use App\database\Database;
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+
+function debug( $arg ){
+
+    echo "<div style='background:#fda500; z-index:1000; padding:15px;'>";
+
+        $trace = debug_backtrace();
+        //debug_backtrace() : fonction interne de PHP qui retourne un array avec des infos à l'endroit où l'on fait appel à la fonction.
+
+        echo "<p>Debug demandé dans le fichier : ". $trace[0]['file'] ." à la ligne ". $trace[0]['line'] ."</p>";
+
+        echo "<pre>";
+            print_r( $arg );
+        echo "</pre>";
+
+    echo "</div>";
+}
 
 require 'vendor/autoload.php';
 
@@ -18,6 +35,18 @@ class Application
         'question' => [
             'controller' => 'QuestionController',
             'method' => 'showQuestion'
+        ],
+        'answer' => [
+            'controller' => 'AnswerController',
+            'method' => 'create'
+        ],
+        'login' => [
+            'controller' => 'UserController',
+            'method' => 'login'
+        ],
+        'logout' => [
+            'controller' => 'UserController',
+            'method' => 'logout'
         ],
         'error404' => [
             'controller' => 'ErrorController',

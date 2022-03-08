@@ -4,6 +4,7 @@ namespace App\Model;
 
 use PDO;
 use App\database\Database;
+use DateTime;
 
 class QuestionModel
 {
@@ -32,8 +33,10 @@ class QuestionModel
     {
         $database = new Database();
         $this->pdo = $database->getPDO();
+
     }
 
+    #Récupérer toutes les questions
     public function findAll()
     {
         $sql = 'SELECT
@@ -54,6 +57,7 @@ class QuestionModel
         return $result;
     }
 
+    #Pour trouver une question par son ID
     public function findById($id){
         
         $sql = 'SELECT * FROM ' . self::TABLE_NAME . ' WHERE id = '.$id;
@@ -65,6 +69,7 @@ class QuestionModel
         return $result;
     }
 
+    #Pour ajouter une nouvelle question dans la base de données
     public function create($title, $content, $status, $technology, $createdAt, $updatedAt, $userId)
     {
         $sql = 'INSERT INTO ' . self::TABLE_NAME . '
@@ -207,7 +212,7 @@ class QuestionModel
      *
      * @return  self
      */ 
-    public function setCreatedAt($createdAt)
+    public function setCreatedAt(DateTime $createdAt)
     {
         $this->createdAt = $createdAt;
 

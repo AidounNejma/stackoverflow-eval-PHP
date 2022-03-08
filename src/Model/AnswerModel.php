@@ -12,8 +12,6 @@ class AnswerModel
 
     protected $content;
 
-    protected $note;
-
     protected $status;
 
     protected $createdAt;
@@ -39,7 +37,6 @@ class AnswerModel
         $sql = 'SELECT
                 `id`
                 ,`content`
-                , `note`
                 , `status`
                 , `created_at`
                 , `updated_at`
@@ -54,22 +51,18 @@ class AnswerModel
         return $result;
     }
 
-    public function create($content, $note, $status, $createdAt, $updatedAt, $userId, $questionId)
+    public function create($content, $userId, $questionId)
     {
         $sql = 'INSERT INTO ' . self::TABLE_NAME . '
-                (`content`, `note`, `status`, `created_at`, `updated_at`, `user_id`, `question_id`)
+                (`content`, `user_id`, `question_id`)
                 VALUES
-                (:content, :note, :status, :created_at, :updated_at, :user_id, :question_id)
+                (:content, :user_id, :question_id)
         ';
 
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->bindValue(':content', $content, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':note', $note, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':status', $status, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':created_at', $createdAt, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':updated_at', $updatedAt, PDO::PARAM_STR);
         $pdoStatement->bindValue(':user_id', $userId, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':questionId', $questionId, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':question_id', $questionId, PDO::PARAM_STR);
 
         $result = $pdoStatement->execute();
         
