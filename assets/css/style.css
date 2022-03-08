@@ -1,8 +1,12 @@
+/* Nav */
+
 .logo{
     width: 7em;
 }
 
+/* Fin nav */
 
+/* Page index: toutes les questions */
 
 .containerQuestion{
     display: flex;
@@ -40,3 +44,6 @@
 .askQuestion{
     margin-right: 4%;
 }
+
+/* Fin page index */
+

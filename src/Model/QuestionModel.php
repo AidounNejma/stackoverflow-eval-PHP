@@ -54,6 +54,17 @@ class QuestionModel
         return $result;
     }
 
+    public function findById($id){
+        
+        $sql = 'SELECT * FROM ' . self::TABLE_NAME . ' WHERE id = '.$id;
+
+        $pdoStatement = $this->pdo->query($sql);
+        
+        $result = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
+        
+        return $result;
+    }
+
     public function create($title, $content, $status, $technology, $createdAt, $updatedAt, $userId)
     {
         $sql = 'INSERT INTO ' . self::TABLE_NAME . '

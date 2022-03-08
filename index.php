@@ -15,6 +15,10 @@ class Application
             'controller' => 'QuestionController',
             'method' => 'index'
         ],
+        'question' => [
+            'controller' => 'QuestionController',
+            'method' => 'showQuestion'
+        ],
         'error404' => [
             'controller' => 'ErrorController',
             'method' => 'error404'

@@ -21,5 +21,20 @@ class QuestionController extends AbstractController
 
     }
 
+    public function showQuestion()
+    {
+        $id = $_GET['id'];
+
+        var_dump($id);
+        
+        $questionModel = new QuestionModel();
+        
+        $question = $questionModel->findById($id);
+
+        $this->render('questions/oneQuestion.php', [
+            'question' => $question
+        ]);
+
+    }
 
 }
