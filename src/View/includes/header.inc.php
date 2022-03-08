@@ -5,9 +5,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="./assets/css/allQuestion.css">
+    <link rel="icon" type="image/logo" href="https://upload.wikimedia.org/wikipedia/commons/e/ef/Stack_Overflow_icon.svg">
+    
     <title>Stackoverflow</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+    <!-- CSS perso -->
+    <link rel="stylesheet" href="./assets/css/allQuestion.css">
+
+    <!-- Script pour les logos-->
+    <script src="https://kit.fontawesome.com/14fbcf0019.js" crossorigin="anonymous"></script>
 </head>
 
 <body>

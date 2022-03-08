@@ -23,3 +23,14 @@
     display: flex;
     justify-content: space-between;
 }
+
+.tag{
+    padding: 1% 5%;
+    margin-top: 2%;
+}
+
+.line{
+    background-color: darkgray;
+    height: 1px;
+    width: 100%;
+}
