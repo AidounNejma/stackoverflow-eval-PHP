@@ -15,10 +15,10 @@ require_once './src/View/includes/header.inc.php';
 
         <div class="right">
             
-            <a href="?page="><?= $question->getTitle()?></a>
+            <a href="?page=question/id=<?= $question->getId() ?>"><?= $question->getTitle()?></a>
             
             <div class="infoFlex">
-                <a href="?page=question/id=<?= $question->getId() ?>" class="btn btn-primary tag"><?= $question->getTechnology()?></a>
+                <a href="" class="btn btn-primary tag"><?= $question->getTechnology()?></a>
                 <a href="">Nejma Aidoun</a>
             </div>
 
