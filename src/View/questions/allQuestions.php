@@ -19,7 +19,7 @@ require_once './src/View/includes/header.inc.php';
             
             <div class="infoFlex">
                 <button class="btn btn-primary tag"><?= $question->getTechnology()?></button>
-                <a href="">Nejma Aidoun</a>
+                <a href="?page=question/id=<?= $question->getId() ?>">Nejma Aidoun</a>
             </div>
 
         </div>
