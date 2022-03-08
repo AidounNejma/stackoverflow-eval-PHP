@@ -5,20 +5,20 @@ require_once './src/View/includes/header.inc.php';
 ?>
 
 <h1 class="text-center">Top Questions</h1>
-
+<a href="?page=ask" class="btn btn-primary float-right askQuestion">Ask Question</a>
 <?php foreach ($questions as $question) : ?>
     <div class="containerQuestion">
+
         <div class="left">
             <p>0 answers</p>
             <p><?= $question->getCreatedAt() ?></p>
         </div>
 
         <div class="right">
-            
-            <a href="?page=question/id=<?= $question->getId() ?>"><?= $question->getTitle()?></a>
-            
+            <a href="?page=question/id=<?= $question->getId() ?>"><?= $question->getTitle() ?></a>
+
             <div class="infoFlex">
-                <a href="" class="btn btn-primary tag"><?= $question->getTechnology()?></a>
+                <a href="" class="btn btn-primary tag"><?= $question->getTechnology() ?></a>
                 <a href="">Nejma Aidoun</a>
             </div>
 
@@ -26,7 +26,7 @@ require_once './src/View/includes/header.inc.php';
 
     </div>
     <div class="line"></div>
-    
+
 <?php endforeach ?>
 
 <?php
