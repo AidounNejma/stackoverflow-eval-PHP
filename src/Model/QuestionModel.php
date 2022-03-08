@@ -17,6 +17,8 @@ class QuestionModel{
 
     protected $status;
 
+    protected $technology;
+
     protected $createdAt;
 
     protected $updatedAt;
@@ -41,6 +43,7 @@ class QuestionModel{
                 ,`content`
                 ,`note`
                 ,`status`
+                ,`technology`
                 ,`created_at`
                 ,`updated_at`
                 ,`user_id`
@@ -53,12 +56,12 @@ class QuestionModel{
         return $result;
     }
 
-    public function create($title, $content, $note, $status, $createdAt, $updatedAt, $userId)
+    public function create($title, $content, $note, $status, $technology, $createdAt, $updatedAt, $userId)
     {
         $sql = 'INSERT INTO ' . self::TABLE_NAME . '
-                (`title`, `content`, `note`, `status`, `created_at`, `updated_at`, `user_id`)
+                (`title`, `content`, `note`, `status`, `technology`, `created_at`, `updated_at`, `user_id`)
                 VALUES
-                (:title, :content, :note, :status, :created_at, :updated_at, :user_id)
+                (:title, :content, :note, :status, :technology, :created_at, :updated_at, :user_id)
         ';
 
         $pdoStatement = $this->pdo->prepare($sql);
@@ -66,6 +69,7 @@ class QuestionModel{
         $pdoStatement->bindValue(':content', $content, PDO::PARAM_INT);
         $pdoStatement->bindValue(':note', $note, PDO::PARAM_INT);
         $pdoStatement->bindValue(':status', $status, PDO::PARAM_INT);
+        $pdoStatement->bindValue(':technology', $technology, PDO::PARAM_INT);
         $pdoStatement->bindValue(':created_at', $createdAt, PDO::PARAM_INT);
         $pdoStatement->bindValue(':updated_at', $updatedAt, PDO::PARAM_INT);
         $pdoStatement->bindValue(':user_id', $userId, PDO::PARAM_INT);
@@ -183,6 +187,26 @@ class QuestionModel{
     }
 
     /**
+     * Get the value of technology
+     */ 
+    public function getTechnology()
+    {
+        return $this->technology;
+    }
+
+    /**
+     * Set the value of technology
+     *
+     * @return  self
+     */ 
+    public function setTechnology($technology)
+    {
+        $this->technology = $technology;
+
+        return $this;
+    }
+
+    /**
      * Get the value of createdAt
      */ 
     public function getCreatedAt()
@@ -233,4 +257,6 @@ class QuestionModel{
 
         return $this;
     }
+
+
 }
