@@ -4,23 +4,23 @@ require_once './src/View/includes/header.inc.php';
 
 ?>
 
+<h1 class="text-center">Top Questions</h1>
+
 <?php foreach ($questions as $question) : ?>
     <div class="containerQuestion">
         <div class="left">
-            <p>0 votes</p>
             <p>0 answers</p>
-            <p>2 views</p>
         </div>
 
         <div class="right">
-            <a href=""><?= $question->getTitle()?></a>
+            <a href="?page="><?= $question->getTitle()?></a>
             <div class="infoFlex">
 
-                <button><?= $question->getTechnology()?></button>
+                <button class="btn btn-primary"><?= $question->getTechnology()?></button>
 
                 <div>
-                    <a href=""></a>
-                    <p>13 asked 15 sec ago</p>
+                    <a href="">Nejma Aidoun</a>
+                    <p><?= $question->getCreatedAt() ?></p>
                 </div>
 
             </div>

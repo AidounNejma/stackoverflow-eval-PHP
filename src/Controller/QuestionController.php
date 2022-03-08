@@ -7,6 +7,7 @@ use App\Model\QuestionModel;
 
 class QuestionController extends AbstractController
 {
+    
     public function index()
     {
 

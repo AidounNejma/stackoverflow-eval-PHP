@@ -5,15 +5,14 @@ namespace App\Model;
 use PDO;
 use App\database\Database;
 
-class QuestionModel{
+class QuestionModel
+{
 
     protected $id;
 
     protected $title;
 
     protected $content;
-
-    protected $note;
 
     protected $status;
 
@@ -41,7 +40,6 @@ class QuestionModel{
                 `id`
                 ,`title`
                 ,`content`
-                ,`note`
                 ,`status`
                 ,`technology`
                 ,`created_at`
@@ -56,18 +54,17 @@ class QuestionModel{
         return $result;
     }
 
-    public function create($title, $content, $note, $status, $technology, $createdAt, $updatedAt, $userId)
+    public function create($title, $content, $status, $technology, $createdAt, $updatedAt, $userId)
     {
         $sql = 'INSERT INTO ' . self::TABLE_NAME . '
-                (`title`, `content`, `note`, `status`, `technology`, `created_at`, `updated_at`, `user_id`)
+                (`title`, `content`, `status`, `technology`, `created_at`, `updated_at`, `user_id`)
                 VALUES
-                (:title, :content, :note, :status, :technology, :created_at, :updated_at, :user_id)
+                (:title, :content, :status, :technology, :created_at, :updated_at, :user_id)
         ';
 
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->bindValue(':title', $title, PDO::PARAM_STR);
         $pdoStatement->bindValue(':content', $content, PDO::PARAM_INT);
-        $pdoStatement->bindValue(':note', $note, PDO::PARAM_INT);
         $pdoStatement->bindValue(':status', $status, PDO::PARAM_INT);
         $pdoStatement->bindValue(':technology', $technology, PDO::PARAM_INT);
         $pdoStatement->bindValue(':created_at', $createdAt, PDO::PARAM_INT);
@@ -142,26 +139,6 @@ class QuestionModel{
     public function setContent($content)
     {
         $this->content = $content;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of note
-     */ 
-    public function getNote()
-    {
-        return $this->note;
-    }
-
-    /**
-     * Set the value of note
-     *
-     * @return  self
-     */ 
-    public function setNote($note)
-    {
-        $this->note = $note;
 
         return $this;
     }

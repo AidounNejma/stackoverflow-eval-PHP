@@ -1,3 +1,9 @@
+.logo{
+    width: 7em;
+}
+
+
+
 .containerQuestion{
     display: flex;
     justify-content: center;
