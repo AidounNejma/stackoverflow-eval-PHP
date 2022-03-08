@@ -18,8 +18,8 @@ require_once './src/View/includes/header.inc.php';
             <a href="?page="><?= $question->getTitle()?></a>
             
             <div class="infoFlex">
-                <button class="btn btn-primary tag"><?= $question->getTechnology()?></button>
-                <a href="?page=question/id=<?= $question->getId() ?>">Nejma Aidoun</a>
+                <a href="?page=question/id=<?= $question->getId() ?>" class="btn btn-primary tag"><?= $question->getTechnology()?></a>
+                <a href="">Nejma Aidoun</a>
             </div>
 
         </div>
