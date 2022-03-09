@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Controller\AbstractController;
+use App\Model\AnswerModel;
 use App\Model\QuestionModel;
+use App\Model\UserModel;
 
 class QuestionController extends AbstractController
 {
@@ -27,13 +29,20 @@ class QuestionController extends AbstractController
         $id = $_GET['id'];
         
         $questionModel = new QuestionModel();
-        
         $question = $questionModel->findById($id);
-
         $question = $question[0];
 
+        $answerModel = new AnswerModel();
+        $answers = $answerModel->findByQuestion($id);
+
+        $userModel = new UserModel();
+        $users =  $userModel->findAll();
+
+
         $this->render('questions/oneQuestion.php', [
-            'question' => $question
+            'question' => $question,
+            'answers' => $answers,
+            "users" => $users,
         ]);
 
     }

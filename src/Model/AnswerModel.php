@@ -32,17 +32,10 @@ class AnswerModel
         $this->pdo = $database->getPDO();
     }
 
+    #Trouver toutes les réponses
     public function findAll()
     {
-        $sql = 'SELECT
-                `id`
-                ,`content`
-                , `status`
-                , `created_at`
-                , `updated_at`
-                , `user_id`
-                , `question_id`
-                FROM ' . self::TABLE_NAME . '
+        $sql = 'SELECT * FROM ' . self::TABLE_NAME . '
                 ORDER BY `id` ASC;
         ';
 
@@ -51,6 +44,26 @@ class AnswerModel
         return $result;
     }
 
+    #Trouver par l'id de la question
+    public function findByQuestion($id)
+    {
+        $sql = 'SELECT * FROM ' . self::TABLE_NAME . '
+        WHERE question_id = '. $id;
+        
+        $pdoStatement = $this->pdo->query($sql);
+        
+        $result = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
+        
+        foreach($result as $r)
+        {
+            $r->setUserId($r->user_id);
+        
+        }
+        
+        return $result;
+    }
+
+    #Créer un commentaire
     public function create($content, $userId, $questionId)
     {
         $sql = 'INSERT INTO ' . self::TABLE_NAME . '
@@ -72,8 +85,6 @@ class AnswerModel
 
         return $this->pdo->lastInsertId();
     }
-
-
 
     /**
      * Get the value of id
@@ -168,7 +179,7 @@ class AnswerModel
      *
      * @return  self
      */ 
-    public function setCreatedAt(Datetime $createdAt)
+    public function setCreatedAt($createdAt)
     {
         $this->createdAt = $createdAt;
 
@@ -188,7 +199,7 @@ class AnswerModel
      *
      * @return  self
      */ 
-    public function setUpdatedAt(Datetime $updatedAt)
+    public function setUpdatedAt($updatedAt)
     {
         $this->updatedAt = $updatedAt;
 

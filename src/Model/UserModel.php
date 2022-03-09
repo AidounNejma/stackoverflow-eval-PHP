@@ -43,8 +43,8 @@ class UserModel
                 ,`password`
                 ,`gender`
                 ,`status`
-                ,`createdAt`
-                ,`updatedAt`
+                ,`created_at`
+                ,`updated_at`
                 FROM ' . self::TABLE_NAME . '
                 ORDER BY `id` ASC;
         ';
@@ -100,6 +100,17 @@ class UserModel
         return $result;
     }
 
+    public function findById($id)
+    {
+        $sql = 'SELECT * FROM ' . self::TABLE_NAME . '
+        WHERE id = '. $id;
+        
+        $pdoStatement = $this->pdo->query($sql);
+        
+        $result = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
+        
+        return $result;
+    }
 
 
     /**

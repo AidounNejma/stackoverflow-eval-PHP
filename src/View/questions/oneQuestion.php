@@ -32,6 +32,25 @@ require_once './src/View/includes/header.inc.php';
     </form>
 </div>
 
+<?php foreach ($answers as $answer) : ?>
+
+    <div class="col-md-8 m-auto">
+        
+        <p><?= $answer->getContent() ?></p>
+        
+        <?php foreach ($users as $user) : ?>
+            <?php if ($answer->getUserId() == $user->getId()) : ?>
+                <p><?= $user->getNickname() ?> </p>
+            <?php endif ?>
+
+        <?php endforeach ?>
+    
+    </div>
+
+<?php endforeach ?>
+
+
+
 <?php
 
 require_once './src/View/includes/footer.inc.php';
