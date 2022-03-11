@@ -74,8 +74,8 @@ class AnswerModel
 
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->bindValue(':content', $content, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':user_id', $userId, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':question_id', $questionId, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':user_id', $userId, PDO::PARAM_INT);
+        $pdoStatement->bindValue(':question_id', $questionId, PDO::PARAM_INT);
 
         $result = $pdoStatement->execute();
         

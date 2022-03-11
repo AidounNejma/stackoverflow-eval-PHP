@@ -75,15 +75,15 @@ class QuestionModel
     public function create($title, $content, $technology, $userId)
     {
         $sql = 'INSERT INTO ' . self::TABLE_NAME . '
-                (`title`, `content`, `status`, `technology`, `created_at`, `updated_at`, `user_id`)
+                (`title`, `content`, `technology`, `user_id`)
                 VALUES
-                (:title, :content, :status, :technology, :created_at, :updated_at, :user_id)
+                (:title, :content, :technology, :user_id)
         ';
 
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->bindValue(':title', $title, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':content', $content, PDO::PARAM_INT);
-        $pdoStatement->bindValue(':technology', $technology, PDO::PARAM_INT);
+        $pdoStatement->bindValue(':content', $content, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':technology', $technology, PDO::PARAM_STR);
         $pdoStatement->bindValue(':user_id', $userId, PDO::PARAM_INT);
 
 

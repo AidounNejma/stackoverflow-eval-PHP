@@ -50,12 +50,33 @@ class QuestionController extends AbstractController
 
     }
 
-    public function askQuestion()
+    public function pageAskQuestion()
     {
-
         $this->render('questions/askQuestion.php', [
         
         ]);
+    }
+
+    public function askQuestion()
+    {
+
+            # Récupération de l'id de l'utilisateur
+            $userId = $_SESSION['id'];
+            
+            #Récupération des POSTS
+            $title = $_POST['title'];
+            $technology = $_POST['technology'];
+            $content = $_POST['content'];
+
+            $questionModel = new QuestionModel();
+            $question = $questionModel->create($title, $content, $technology, $userId);
+            
+            $this->sendJson([
+                'question' => $question
+            ]);
+            
+        
+
     }
 
 }

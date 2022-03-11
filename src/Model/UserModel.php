@@ -68,8 +68,8 @@ class UserModel
         $pdoStatement->bindValue(':password', $password, PDO::PARAM_STR);
         $pdoStatement->bindValue(':gender', $gender, PDO::PARAM_STR);
         $pdoStatement->bindValue(':status', $status, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':created_at', $createdAt, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':updated_at', $updatedAt, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':created_at', $createdAt, PDO::PARAM_INT);
+        $pdoStatement->bindValue(':updated_at', $updatedAt, PDO::PARAM_INT);
         
         $result = $pdoStatement->execute();
         

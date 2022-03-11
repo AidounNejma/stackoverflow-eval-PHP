@@ -50,6 +50,10 @@ class Application
         ],
         'ask' => [
             'controller' => 'QuestionController',
+            'method' => 'pageAskQuestion'
+        ],
+        'askQuestion' => [
+            'controller' => 'QuestionController',
             'method' => 'askQuestion'
         ],
         'error404' => [

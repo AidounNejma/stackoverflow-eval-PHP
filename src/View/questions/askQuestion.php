@@ -17,7 +17,7 @@ require_once './src/View/includes/header.inc.php';
                 <div class="card shadow-2-strong" style="border-radius: 1rem;">
                     <div class="card-body p-5 text-center">
 
-                        <h3 class="mb-5">Want to ask a question?</h3>
+                        <h3 class="mb-5">Want to ask a question ?</h3>
 
                         <div class="form-outline mb-4">
                             <input type="text" id="title" name="title" class="form-control form-control-lg" />
@@ -34,7 +34,7 @@ require_once './src/View/includes/header.inc.php';
                             <label class="form-label" for="content">Content</label>
                         </div>
 
-                        <button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
+                        <button class="btn btn-primary btn-lg btn-block" id="submitAskQuestion" type="submit">Submit</button>
                     </div>
                 </div>
             </div>
