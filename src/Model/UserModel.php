@@ -54,12 +54,12 @@ class UserModel
         return $result;
     }
 
-    public function create($nickname, $email, $password, $gender, $status, $createdAt, $updatedAt)
+    public function create($nickname, $email, $password, $gender, $createdAt)
     {
         $sql = 'INSERT INTO ' . self::TABLE_NAME . '
-                (`nickname`, `email`, `password`, `gender`, `status`, `created_at`, `updated_at`)
+                (`nickname`, `email`, `password`, `gender`, `created_at`)
                 VALUES
-                (:nickname, :email, :password, :gender, :status, :created_at, :updated_at)
+                (:nickname, :email, :password, :gender, :created_at)
         ';
 
         $pdoStatement = $this->pdo->prepare($sql);
@@ -67,17 +67,35 @@ class UserModel
         $pdoStatement->bindValue(':email', $email, PDO::PARAM_STR);
         $pdoStatement->bindValue(':password', $password, PDO::PARAM_STR);
         $pdoStatement->bindValue(':gender', $gender, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':status', $status, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':created_at', $createdAt, PDO::PARAM_INT);
-        $pdoStatement->bindValue(':updated_at', $updatedAt, PDO::PARAM_INT);
-        
+        $pdoStatement->bindValue(':created_at', $createdAt, PDO::PARAM_STR);
+
         $result = $pdoStatement->execute();
-        
+
         if (!$result) {
             return false;
         }
 
         return $this->pdo->lastInsertId();
+    }
+
+    public function verification($email, $nickname)
+    {
+
+        $sql = 'SELECT
+        `email`
+        ,`nickname`
+        FROM ' . self::TABLE_NAME . '
+        WHERE `email` = "' . $email . '" OR `nickname` = "' . $nickname . '"';
+
+        $pdoStatement = $this->pdo->query($sql);
+
+        $result = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
+
+        if (!$result) {
+            return false;
+        }
+
+        return $result;
     }
 
     public function login($email, $password)
@@ -87,12 +105,12 @@ class UserModel
                 ,`password`
                 ,`id`
                 FROM ' . self::TABLE_NAME . '
-                WHERE email = "'. $email. '" AND password = "'. $password . '"';
-        
+                WHERE email = "' . $email . '" AND password = "' . $password . '"';
+
         $pdoStatement = $this->pdo->query($sql);
-        
+
         $result = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
-        
+
         if (!$result) {
             return false;
         }
@@ -102,19 +120,19 @@ class UserModel
 
     public function findById($id)
     {
-        $sql = 'SELECT * FROM ' . self::TABLE_NAME . ' WHERE id = '.$id;
-        
+        $sql = 'SELECT * FROM ' . self::TABLE_NAME . ' WHERE id = ' . $id;
+
         $pdoStatement = $this->pdo->query($sql);
-        
+
         $result = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
-        
+
         return $result;
     }
 
 
     /**
      * Get the value of id
-     */ 
+     */
     public function getId()
     {
         return $this->id;
@@ -124,7 +142,7 @@ class UserModel
      * Set the value of id
      *
      * @return  self
-     */ 
+     */
     public function setId(int $id)
     {
         $this->id = $id;
@@ -134,7 +152,7 @@ class UserModel
 
     /**
      * Get the value of nickname
-     */ 
+     */
     public function getNickname()
     {
         return $this->nickname;
@@ -144,7 +162,7 @@ class UserModel
      * Set the value of nickname
      *
      * @return  self
-     */ 
+     */
     public function setNickname(string $nickname)
     {
         $this->nickname = $nickname;
@@ -154,7 +172,7 @@ class UserModel
 
     /**
      * Get the value of email
-     */ 
+     */
     public function getEmail()
     {
         return $this->email;
@@ -164,7 +182,7 @@ class UserModel
      * Set the value of email
      *
      * @return  self
-     */ 
+     */
     public function setEmail(string $email)
     {
         $this->email = $email;
@@ -174,7 +192,7 @@ class UserModel
 
     /**
      * Get the value of password
-     */ 
+     */
     public function getPassword()
     {
         return $this->password;
@@ -184,7 +202,7 @@ class UserModel
      * Set the value of password
      *
      * @return  self
-     */ 
+     */
     public function setPassword(string $password)
     {
         $this->password = $password;
@@ -194,7 +212,7 @@ class UserModel
 
     /**
      * Get the value of gender
-     */ 
+     */
     public function getGender()
     {
         return $this->gender;
@@ -204,7 +222,7 @@ class UserModel
      * Set the value of gender
      *
      * @return  self
-     */ 
+     */
     public function setGender(string $gender)
     {
         $this->gender = $gender;
@@ -214,7 +232,7 @@ class UserModel
 
     /**
      * Get the value of status
-     */ 
+     */
     public function getStatus()
     {
         return $this->status;
@@ -224,7 +242,7 @@ class UserModel
      * Set the value of status
      *
      * @return  self
-     */ 
+     */
     public function setStatus(int $status)
     {
         $this->status = $status;
@@ -234,7 +252,7 @@ class UserModel
 
     /**
      * Get the value of createdAt
-     */ 
+     */
     public function getCreatedAt()
     {
         return $this->createdAt;
@@ -244,7 +262,7 @@ class UserModel
      * Set the value of createdAt
      *
      * @return  self
-     */ 
+     */
     public function setCreatedAt(DateTime $createdAt)
     {
         $this->createdAt = $createdAt;
@@ -254,7 +272,7 @@ class UserModel
 
     /**
      * Get the value of updatedAt
-     */ 
+     */
     public function getUpdatedAt()
     {
         return $this->updatedAt;
@@ -264,7 +282,7 @@ class UserModel
      * Set the value of updatedAt
      *
      * @return  self
-     */ 
+     */
     public function setUpdatedAt(DateTime $updatedAt)
     {
         $this->updatedAt = $updatedAt;

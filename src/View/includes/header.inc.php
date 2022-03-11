@@ -22,10 +22,13 @@
 <body>
     <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand" href="?page=index"><img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/f/f7/Stack_Overflow_logo.png" alt="stackoverflow image"></a>
-    
-        <?php if(isset($_SESSION['id'])) :?>
-        <a href="?page=logout"><i class="fas fa-sign-out-alt"></i></a>
-        <?php else :?>
-        <a href="?page=login"><i class="fas fa-user"></i></a>
+
+        <?php if (isset($_SESSION['id'])) : ?>
+            <a href="?page=logout"><i class="fas fa-sign-out-alt"></i></a>
+        <?php else : ?>
+            <div>
+                <a href="?page=register"><i class="fas fa-sign-in-alt"></i> Sign in</a>
+                <a href="?page=login"><i class="fas fa-user"></i> Log in</a>
+            </div>
         <?php endif ?>
     </nav>

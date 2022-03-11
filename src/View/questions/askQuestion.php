@@ -20,17 +20,17 @@ require_once './src/View/includes/header.inc.php';
                         <h3 class="mb-5">Want to ask a question ?</h3>
 
                         <div class="form-outline mb-4">
-                            <input type="text" id="title" name="title" class="form-control form-control-lg" />
+                            <input type="text" id="title" name="title" class="form-control form-control-lg" required/>
                             <label class="form-label" for="title">Title</label>
                         </div>
 
                         <div class="form-outline mb-4">
-                            <input type="text" id="technology" name="technology" class="form-control form-control-lg" />
+                            <input type="text" id="technology" name="technology" class="form-control form-control-lg" required/>
                             <label class="form-label" for="technology">Technology</label>
                         </div>
 
                         <div class="form-outline mb-4">
-                            <textarea name="content" id="content" class="form-control form-control-lg"> </textarea>
+                            <textarea name="content" id="content" class="form-control form-control-lg" required> </textarea>
                             <label class="form-label" for="content">Content</label>
                         </div>
 

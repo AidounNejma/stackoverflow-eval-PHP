@@ -11,23 +11,26 @@ require_once './src/View/includes/header.inc.php';
 </div>
 
 <div class="col-md-8 m-auto" id="question">
-
-    <h1 class="text-center pt-4"><?= $question->getTitle() ?></h1>
-
-    <div class="d-flex justify-content-around">
+    <h1 class="text-center py-4"><?= $question->getTitle() ?></h1>
+    <div class="d-flex justify-content-around py-4">
         <p>Asked today <?= $question->getCreatedAt() ?></p>
+        <?php foreach ($users as $user) : ?>
+            <?php if ($question->user_id == $user->getId()) : ?>
+                <p>By <?= $user->getNickname() ?> </p>
+            <?php endif ?>
+        <?php endforeach ?>
         <p>Answers <?= count($answers) ?></p>
     </div>
 
     <div class="line"></div>
 
-    <div class="col-md-10 m-auto">
-        <h5><?= $question->getContent() ?></h5>
+    <div class="col-md-12 m-auto py-4">
+        <h5 class="contentOfQuestion"><?= $question->getContent() ?></h5>
     </div>
     <!-- Formulaire pour poster une réponse -->
     <?php if (isset($_SESSION['id'])) : ?>
-        <form action="" method="POST" class="formAjax" data-id="<?= $question->getId() ?>">
-            
+        <form action="" method="POST" class="formAjax" class="py-4" data-id="<?= $question->getId() ?>">
+
             <div class="md-form amber-textarea active-amber-textarea">
                 <label for="form22">Your Answer</label>
                 <textarea id="form22" class="md-textarea form-control" rows="3"></textarea>
@@ -43,7 +46,7 @@ require_once './src/View/includes/header.inc.php';
     <?php else : ?>
 
         <h5 class="py-4 text-center notificationLoginIn">To respond to the question you have to be logged in. You can log in <a href="?page=login">here.</a></h5>
-    
+
     <?php endif ?>
 
 </div>
@@ -63,9 +66,9 @@ require_once './src/View/includes/header.inc.php';
                     <p><?= $user->getNickname() ?> </p>
                 </div>
             <?php endif ?>
-            <div class="line"></div>
         <?php endforeach ?>
-
+        <div class="line"></div>
+        
     </div>
 
 <?php endforeach ?>

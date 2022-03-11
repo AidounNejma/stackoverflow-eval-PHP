@@ -40,9 +40,13 @@ class Application
             'controller' => 'AnswerController',
             'method' => 'create'
         ],
+        'register' => [
+            'controller' => 'UserController',
+            'method' => 'register'
+        ],
         'login' => [
             'controller' => 'UserController',
-            'method' => 'login'
+            'method' => 'logIn'
         ],
         'logout' => [
             'controller' => 'UserController',
