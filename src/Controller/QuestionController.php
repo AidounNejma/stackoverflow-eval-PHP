@@ -12,17 +12,23 @@ class QuestionController extends AbstractController
     #Afficher toutes les questions
     public function index()
     {
+        if(isset($_GET['p']))
+        {
+            $page = $_GET['p'];
+        }else{
+            $page = 1;
+        }
 
         $questionModel = new QuestionModel();
-        $questions = $questionModel->findAll();
+        $questions = $questionModel->findByPage($page);
 
         $userModel = new UserModel();
         $users = $userModel->findAll();
         
-
         $this->render('questions/allQuestions.php', [
             'questions' => $questions,
-            'users' => $users
+            'users' => $users,
+            'page' => $page
         ]);
 
     }
@@ -77,7 +83,7 @@ class QuestionController extends AbstractController
             ]);
     }
     
-    public function AllQuestionAdmin()
+    public function allQuestionsAdmin()
     {
         $this->render('admin/allQuestions.php', [
         

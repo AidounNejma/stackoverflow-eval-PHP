@@ -71,11 +71,15 @@ class Application
     const ADMIN_PAGES = [
         'allQuestions' => [
             'controller' => 'QuestionController',
-            'method' => 'allQuestionAdmin'
+            'method' => 'allQuestionsAdmin'
+        ],
+        'allUsers' => [
+            'controller' => 'UserController',
+            'method' => 'allUsersAdmin'
         ],
         'allAnswers' => [
             'controller' => 'AnswerController',
-            'method' => 'allAnswerAdmin'
+            'method' => 'allAnswersAdmin'
         ],
     ];
 
@@ -83,17 +87,21 @@ class Application
 
     private function match($route_name)
     {   
-        #Je créé un objet User
-        $userModel = new UserModel();
 
         #Je récupère l'id de l'utilisateur connecté
-        $userConnected = $_SESSION['id'];
+        if(isset($_SESSION['id']))
+        {
+            #Je créé un objet User
+            $userModel = new UserModel();
+            $userConnected = $_SESSION['id'];
 
-        #Je recherche l'utilisateur connecté dans la bdd
-        $user = $userModel->findById($userConnected);
+            #Je recherche l'utilisateur connecté dans la bdd
+            $user = $userModel->findById($userConnected);
 
-        #Je récupère le statut de l'utilisateur connecté
-        $userStatus = $user[0]->getStatus();
+            #Je récupère le statut de l'utilisateur connecté
+            $userStatus = $user[0]->getStatus();
+        }
+        
 
         // je vérifie si la clef existe dans la liste des pages autorisées
         if (isset(self::AUTHORIZED_PAGES[$route_name])) 

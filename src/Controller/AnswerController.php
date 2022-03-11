@@ -37,4 +37,11 @@ class AnswerController extends AbstractController
         ]);
     }
 
+    public function allAnswersAdmin()
+    {
+        $this->render('admin/allAnswers.php', [
+        
+        ]);
+    }
+
 }

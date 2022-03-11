@@ -28,8 +28,8 @@
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Admin Dashboard</a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="?page=allQuestions">Questions Dashboard</a>
-                    <a class="dropdown-item" href="#">Users Dashboard</a>
-                    <a class="dropdown-item" href="#">Answers Dashboard</a>
+                    <a class="dropdown-item" href="?page=allUsers">Users Dashboard</a>
+                    <a class="dropdown-item" href="?page=allAnswers">Answers Dashboard</a>
                 </div>
             </li>
 

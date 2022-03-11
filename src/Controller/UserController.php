@@ -92,5 +92,13 @@ class UserController extends AbstractController
         header('location:?page=index');
     }
     
+    public function allUsersAdmin()
+    {
+        $userModel = new UserModel();
+        $users = $userModel->findAll();
+        $this->render('admin/allUsers.php', [
+            'users' => $users 
+        ]);
+    }
 
 }

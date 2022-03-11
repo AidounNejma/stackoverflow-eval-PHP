@@ -7,10 +7,10 @@ require_once './src/View/includes/header.inc.php';
 <div class="d-flex my-4 px-2">
     <a href="?page=index"><i class="fas fa-home"></i> Home</a>
     <p class="px-2"> > </p>
-    <p>Questions Dashboard</p>
+    <p>Answers Dashboard</p>
 </div>
 
-<h1 class="text-center py-4">Questions Dashboard</h1>
+<h1 class="text-center py-4">Answers Dashboard</h1>
 
 <table class="table">
     <thead class="thead-dark">

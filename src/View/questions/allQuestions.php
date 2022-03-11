@@ -17,7 +17,7 @@ require_once './src/View/includes/header.inc.php';
     <div class="containerQuestion">
 
         <div class="left">
-            <p><?= $question->created_at?></p>
+            <p><?= $question->created_at ?></p>
         </div>
 
         <div class="right">
@@ -38,6 +38,13 @@ require_once './src/View/includes/header.inc.php';
     <div class="line"></div>
 
 <?php endforeach ?>
+
+<nav aria-label="Page navigation example" class="d-flex justify-content-center">
+    <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="?page=index&p=<?= $page-1 ?>">Previous</a></li>
+        <li class="page-item"><a class="page-link" href="?page=index&p=<?= $page+1 ?>">Next</a></li>
+    </ul>
+</nav>
 
 <?php
 

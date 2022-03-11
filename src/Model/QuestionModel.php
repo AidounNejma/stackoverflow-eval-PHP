@@ -59,6 +59,29 @@ class QuestionModel
         return $result;
     }
 
+    public function findByPage($page)
+    {
+        $sql = 'SELECT
+                `id`
+                ,`title`
+                ,`content`
+                ,`status`
+                ,`technology`
+                ,`created_at`
+                ,`updated_at`
+                ,`user_id`
+                FROM ' . self::TABLE_NAME . '
+                ORDER BY `created_at` DESC 
+                LIMIT '. ($page-1) * 5 . ', 5;
+        ';
+
+        $pdoStatement = $this->pdo->query($sql);
+
+        $result = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
+
+        return $result;
+    }
+
     #Pour trouver une question par son ID
     public function findById($id){
         
