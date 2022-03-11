@@ -26,7 +26,11 @@ require_once './src/View/includes/header.inc.php';
 
             <div class="infoFlex">
                 <a href="" class="btn btn-primary tag"><?= $question->getTechnology() ?></a>
-                <a href="">Nejma Aidoun</a>
+                <?php foreach ($users as $user) : ?>
+                    <?php if ($question->user_id == $user->getId()) : ?>
+                        <a href="#"><?= $user->getNickname() ?></a>
+                    <?php endif ?>
+                <?php endforeach ?>
             </div>
 
         </div>

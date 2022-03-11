@@ -16,13 +16,13 @@ class QuestionController extends AbstractController
         $questionModel = new QuestionModel();
         $questions = $questionModel->findAll();
 
-        $answerModel = new AnswerModel();
-        $answers = $answerModel->findAll();
+        $userModel = new UserModel();
+        $users = $userModel->findAll();
         
 
         $this->render('questions/allQuestions.php', [
             'questions' => $questions,
-            'answers' => $answers
+            'users' => $users
         ]);
 
     }
@@ -50,6 +50,7 @@ class QuestionController extends AbstractController
 
     }
 
+    #Page pour demander une question
     public function pageAskQuestion()
     {
         $this->render('questions/askQuestion.php', [
@@ -57,9 +58,9 @@ class QuestionController extends AbstractController
         ]);
     }
 
+    #Soumission du formulaire pour demander une question
     public function askQuestion()
     {
-
             # Récupération de l'id de l'utilisateur
             $userId = $_SESSION['id'];
             
@@ -74,9 +75,6 @@ class QuestionController extends AbstractController
             $this->sendJson([
                 'question' => $question
             ]);
-            
-        
-
     }
 
 }

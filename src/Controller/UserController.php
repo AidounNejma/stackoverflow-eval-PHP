@@ -22,19 +22,20 @@ class UserController extends AbstractController
             #Instanciation de mon objet user
             $user = new UserModel();
 
-            #Création de la date
+            #La date de création
             $created_at = new \DateTime();
             $created_at = $created_at->format('Y-d-m H:i:s');
 
             #Vérification de l'existence de l'utilisateur en BDD
             $result = $user->verification($email, $nickname);
 
+            #Condition de vérification
             if($result == false)
             {
                 $user->create($nickname, $email, $password, $gender, $created_at);
             }
             else{
-                echo "The Email is already used.";
+                echo "The Email or nickname are already used.";
             }
 
         }

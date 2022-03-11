@@ -92,3 +92,9 @@
 /* Fin page une seule question */
 
 /* --------------------------------------------------------- */
+
+/* Page demander une question */
+
+.card-body.p-5.text-center {
+    background-color: #ffb52ce1;
+}

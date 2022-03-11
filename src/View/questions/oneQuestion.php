@@ -7,13 +7,13 @@ require_once './src/View/includes/header.inc.php';
 <div class="d-flex my-4 px-2">
     <a href="?page=index"><i class="fas fa-home"></i> Home</a>
     <p class="px-2"> > </p>
-    <p>Ask A question</p>
+    <p><?= $question->getTitle() ?></p>
 </div>
 
 <div class="col-md-8 m-auto" id="question">
     <h1 class="text-center py-4"><?= $question->getTitle() ?></h1>
     <div class="d-flex justify-content-around py-4">
-        <p>Asked today <?= $question->getCreatedAt() ?></p>
+        <p>Asked <?= $question->created_at ?></p>
         <?php foreach ($users as $user) : ?>
             <?php if ($question->user_id == $user->getId()) : ?>
                 <p>By <?= $user->getNickname() ?> </p>
@@ -27,6 +27,7 @@ require_once './src/View/includes/header.inc.php';
     <div class="col-md-12 m-auto py-4">
         <h5 class="contentOfQuestion"><?= $question->getContent() ?></h5>
     </div>
+
     <!-- Formulaire pour poster une réponse -->
     <?php if (isset($_SESSION['id'])) : ?>
         <form action="" method="POST" class="formAjax" class="py-4" data-id="<?= $question->getId() ?>">
@@ -62,7 +63,8 @@ require_once './src/View/includes/header.inc.php';
 
         <?php foreach ($users as $user) : ?>
             <?php if ($answer->getUserId() == $user->getId()) : ?>
-                <div class="d-flex justify-content-end">
+                <div class="d-flex justify-content-between">
+                    <p><?= $answer->created_at ?></p>
                     <p><?= $user->getNickname() ?> </p>
                 </div>
             <?php endif ?>
