@@ -76,5 +76,11 @@ class QuestionController extends AbstractController
                 'question' => $question
             ]);
     }
-
+    
+    public function AllQuestionAdmin()
+    {
+        $this->render('admin/allQuestions.php', [
+        
+        ]);
+    }
 }

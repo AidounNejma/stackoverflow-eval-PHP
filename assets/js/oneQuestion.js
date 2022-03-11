@@ -23,14 +23,14 @@ $(document).ready(function () {
                 // si la requête a fonctionnée, j'ajoute le commentaire au dom
                 .done(function (response) {
                     // je créé une réponse
-                    console.log(response.user.created_at)
+                    console.log(response)
                     const newAnswer = `
                 <div class="line"></div>
                 <div class="col-md-8 m-auto">
                     <p class="paragraphQuestion">${answerContent}</p>
                     <div class="d-flex justify-content-between">
-                        <p>${response.user.created_at}</p>
-                        <p>nejnej</p>
+                        <p>${response.created_at}</p>
+                        <p>${response.nickname}</p>
                     </div>
                 </div>
             `;

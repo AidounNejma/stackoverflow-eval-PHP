@@ -22,6 +22,8 @@ class AnswerController extends AbstractController
         $userModel = new UserModel();
         $user = $userModel->findById($userId);
         $user = $user[0];
+        $created_at = $user->created_at;
+        $nickname = $user->getNickname();
 
         // Je crée une réponse
         $answerModel = new AnswerModel();
@@ -30,7 +32,8 @@ class AnswerController extends AbstractController
         // Je renvoie les données en json
         $this->sendJson([
             'newContent' => $newContent,
-            'user' => $user
+            'created_at' => $created_at,
+            'nickname' => $nickname
         ]);
     }
 

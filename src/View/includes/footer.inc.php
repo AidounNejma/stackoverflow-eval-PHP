@@ -9,8 +9,16 @@
 <!-- Fin script Jquery -->
 
 <!-- Mon script -->
-<script type="text/javascript" src="./assets/js/oneQuestion.js"></script>
-<script type="text/javascript" src="./assets/js/askQuestion.js"></script>
+<?php if($_GET['page'] == "question") :?>
+    <script type="text/javascript" src="./assets/js/oneQuestion.js"></script>
+
+<?php elseif($_GET['page'] == "ask") :?>
+    <script type="text/javascript" src="./assets/js/askQuestion.js"></script>
+
+<?php elseif($_GET['page'] == "allQuestions") :?>
+    <script type="text/javascript" src="./assets/js/adminQuestion.js"></script>
+    
+<?php endif ?>
 <!-- Fin Mon script -->
 
 <!-- Script SweetAlert -->

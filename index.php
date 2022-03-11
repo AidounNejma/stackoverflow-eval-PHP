@@ -2,11 +2,13 @@
 
 session_start();
 use App\database\Database;
+use App\Model\UserModel;
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+#Pour avoir un print_r amélioré
 function debug( $arg ){
 
     echo "<div style='background:#fda500; z-index:1000; padding:15px;'>";
@@ -66,14 +68,43 @@ class Application
         ],
     ];
 
+    const ADMIN_PAGES = [
+        'allQuestions' => [
+            'controller' => 'QuestionController',
+            'method' => 'allQuestionAdmin'
+        ],
+        'allAnswers' => [
+            'controller' => 'AnswerController',
+            'method' => 'allAnswerAdmin'
+        ],
+    ];
+
     const DEFAULT_ROUTE = 'index';
 
     private function match($route_name)
-    {
-        // je vérifie sir la clef existe dans la liste des pages autorisées
-        if (isset(self::AUTHORIZED_PAGES[$route_name])) {
+    {   
+        #Je créé un objet User
+        $userModel = new UserModel();
+
+        #Je récupère l'id de l'utilisateur connecté
+        $userConnected = $_SESSION['id'];
+
+        #Je recherche l'utilisateur connecté dans la bdd
+        $user = $userModel->findById($userConnected);
+
+        #Je récupère le statut de l'utilisateur connecté
+        $userStatus = $user[0]->getStatus();
+
+        // je vérifie si la clef existe dans la liste des pages autorisées
+        if (isset(self::AUTHORIZED_PAGES[$route_name])) 
+        {
             $route = self::AUTHORIZED_PAGES[$route_name];
-        } else {
+        }   #Si la route entrée est une page admin, et que le statut de la personne connectée est = 1
+            elseif(isset(self::ADMIN_PAGES[$route_name]) && $userStatus == 1)
+        {   #Alors on retourne la page Admin
+            $route = self::ADMIN_PAGES[$route_name];
+        } 
+            else {
             $route = self::AUTHORIZED_PAGES['error404'];
         }
 
@@ -100,6 +131,7 @@ class Application
         $controller->$method_name();
 
     }
+    
 }
 
 $application = new Application();

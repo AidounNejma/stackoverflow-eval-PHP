@@ -91,5 +91,6 @@ class UserController extends AbstractController
         #Redirection vers l'index
         header('location:?page=index');
     }
+    
 
 }
