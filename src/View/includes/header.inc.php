@@ -1,3 +1,23 @@
+<?php
+
+use App\Model\UserModel;
+
+function adminAccess()
+{
+    if (isset($_SESSION['id'])) {
+        $idUser = $_SESSION['id'];
+        $userModel = new UserModel();
+        $user = $userModel->findById($idUser);
+
+        $user = $user[0]->getStatus();
+
+        return $user;
+    }
+}
+
+$admin = adminAccess();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -23,7 +43,7 @@
     <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand" href="?page=index"><img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/f/f7/Stack_Overflow_logo.png" alt="stackoverflow image"></a>
 
-        <?php if (isset($_SESSION['id'])) : ?>
+        <?php if ($admin == 1) : ?>
             <li class="nav-item dropdown" style="list-style-type: none;">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Admin Dashboard</a>
                 <div class="dropdown-menu">
@@ -32,7 +52,9 @@
                     <a class="dropdown-item" href="?page=allAnswers">Answers Dashboard</a>
                 </div>
             </li>
-
+        <?php endif ?>
+        
+        <?php if (isset($_SESSION['id'])) : ?>
             <a href="?page=logout"><i class="fas fa-sign-out-alt"></i></a>
         <?php else : ?>
             <div>

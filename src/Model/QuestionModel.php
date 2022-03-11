@@ -59,8 +59,16 @@ class QuestionModel
         return $result;
     }
 
-    public function findByPage($page)
+    public function findByPage($page, $search)
     {
+        if($search){
+            
+            $like = "WHERE `title` LIKE '%" .$search. "%' ";
+        }
+        else{
+            $like = "";
+        }
+
         $sql = 'SELECT
                 `id`
                 ,`title`
@@ -70,8 +78,8 @@ class QuestionModel
                 ,`created_at`
                 ,`updated_at`
                 ,`user_id`
-                FROM ' . self::TABLE_NAME . '
-                ORDER BY `created_at` DESC 
+                FROM ' . self::TABLE_NAME . ' '. $like .
+                ' ORDER BY `created_at` DESC 
                 LIMIT '. ($page-1) * 5 . ', 5;
         ';
 

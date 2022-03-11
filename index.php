@@ -142,5 +142,7 @@ class Application
     
 }
 
+
 $application = new Application();
 $application->run();
+

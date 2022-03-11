@@ -39,8 +39,12 @@ class AnswerController extends AbstractController
 
     public function allAnswersAdmin()
     {
-        $this->render('admin/allAnswers.php', [
+        $answerModel = new AnswerModel();
         
+        $answers = $answerModel->findAll();
+        
+        $this->render('admin/allAnswers.php', [
+            "answers" => $answers
         ]);
     }
 
