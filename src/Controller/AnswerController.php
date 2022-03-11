@@ -4,27 +4,32 @@ namespace App\Controller;
 
 use App\Controller\AbstractController;
 use App\Model\AnswerModel;
+use App\Model\UserModel;
 use DateTime;
 
 class AnswerController extends AbstractController
 {
 
-#Créer un commentaire
+#Créer une réponse
     public function create()
     {
-        // je récupère mes info 
-        // soumis en javascript
+        // Je récupère mes info soumisent en javascript
         $answerContent = $_POST['answerContent'];
         $questionId = $_POST['questionId'];
         $userId = $_SESSION['id'];
+
+        // Je récupère les données de mon utilisateur via l'id de la session utilisateur
+        $userModel = new UserModel();
+        $user = $userModel->findById($userId);
 
         // Je crée une réponse
         $answerModel = new AnswerModel();
         $newContent = $answerModel->create($answerContent, $userId, $questionId);
 
-        // je renvoie l'id de la liste en json
+        // Je renvoie les données en json
         $this->sendJson([
-            'content' => $newContent
+            'newContent' => $newContent,
+            'user' => $user
         ]);
     }
 

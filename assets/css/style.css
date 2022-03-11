@@ -54,6 +54,7 @@
 
 /* Page une seule question */
 
+/* Formulaire */
 .active-amber-textarea.md-form label.active {
     color: #ffa000;
 }
@@ -67,7 +68,19 @@
 .active-amber-textarea.md-form textarea.md-textarea:focus:not([readonly])+label {
     color: #ffa000;
 }
+/* Fin Formulaire */
 
+/* Contenu d'une seule question */
+.paragraphQuestion{
+    padding: 3%;
+    border-radius: 8px;
+    background-color: #ffa50061;
+}
+
+.notificationLoginIn{
+    background-color: rgba(255, 0, 0, 0.329);
+    margin: 4% 0;
+}
 /* Fin page une seule question */
 
 /* --------------------------------------------------------- */

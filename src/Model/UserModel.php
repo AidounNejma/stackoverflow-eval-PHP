@@ -102,7 +102,7 @@ class UserModel
 
     public function findById($id)
     {
-        $sql = 'SELECT * FROM ' . self::TABLE_NAME . '
+        $sql = 'SELECT id, nickname, email, gender, status, created_at, updated_at FROM ' . self::TABLE_NAME . '
         WHERE id = '. $id;
         
         $pdoStatement = $this->pdo->query($sql);
