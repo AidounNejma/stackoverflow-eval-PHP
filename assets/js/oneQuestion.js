@@ -23,12 +23,13 @@ $(document).ready(function () {
                 // si la requête a fonctionnée, j'ajoute le commentaire au dom
                 .done(function (response) {
                     // je créé une réponse
-                    console.log(response)
+                    console.log(response.user.created_at)
                     const newAnswer = `
                 <div class="line"></div>
                 <div class="col-md-8 m-auto">
                     <p class="paragraphQuestion">${answerContent}</p>
-                    <div class="d-flex justify-content-end">
+                    <div class="d-flex justify-content-between">
+                        <p>${response.user.created_at}</p>
                         <p>nejnej</p>
                     </div>
                 </div>
@@ -37,17 +38,18 @@ $(document).ready(function () {
                     // j'ajoute le commentaire
                     $(question).after(newAnswer);
                     // je vide l'input
-                    $(answerContent).val('');
+                    $('textarea').val('');
                 })
                 ;
 
         
     }
+
     /* Pour supprimer la réponse avant de l'envoyer */
     function deleteAnswer(e){
-        e.preventDefault;
+        e.preventDefault();
         const answerContent = $('textarea').val();
-        $(answerContent).val('');
+        $('textarea').val('');
     }
 
     // event pour ajouter une réponse

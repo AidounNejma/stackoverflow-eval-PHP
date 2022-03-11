@@ -33,7 +33,11 @@ class UserController extends AbstractController
             #Condition de vérification
             if($result == false)
             {
+                #Création de l'utilisateur
                 $user->create($nickname, $email, $password, $gender, $created_at);
+
+                #Redirection vers l'index
+                header('location:?page=login');
             }
             else{
                 echo "The Email or nickname are already used.";
