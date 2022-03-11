@@ -98,14 +98,14 @@ class UserModel
         return $result;
     }
 
-    public function login($email, $password)
+    public function login($email)
     {
         $sql = 'SELECT
                 `email`
                 ,`password`
                 ,`id`
                 FROM ' . self::TABLE_NAME . '
-                WHERE email = "' . $email . '" AND password = "' . $password . '"';
+                WHERE email = "' . $email .'"';
 
         $pdoStatement = $this->pdo->query($sql);
 

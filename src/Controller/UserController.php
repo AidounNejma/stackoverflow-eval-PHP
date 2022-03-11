@@ -18,6 +18,7 @@ class UserController extends AbstractController
             $gender = $_POST['gender'];
             $email = $_POST['email'];
             $password = $_POST['password'];
+            $password = password_hash($password, PASSWORD_DEFAULT);
 
             #Instanciation de mon objet user
             $user = new UserModel();
@@ -57,12 +58,12 @@ class UserController extends AbstractController
             $user = new UserModel();
 
             #Vérification de l'existence de l'utilisateur en BDD
-            $result = $user->login($email, $password);
+            $result = $user->login($email);
 
             $result = $result[0];
 
             #S'il y a un resultat, alors on stocke dans $_SESSION
-            if($result){
+            if($result && password_verify($password, $result->getPassword())){
                 
                 $_SESSION["id"] = $result->getId();
                 

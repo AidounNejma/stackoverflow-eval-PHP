@@ -49,7 +49,7 @@ class QuestionModel
                 ,`updated_at`
                 ,`user_id`
                 FROM ' . self::TABLE_NAME . '
-                ORDER BY `id` ASC;
+                ORDER BY `created_at` DESC;
         ';
 
         $pdoStatement = $this->pdo->query($sql);

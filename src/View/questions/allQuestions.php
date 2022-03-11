@@ -17,8 +17,7 @@ require_once './src/View/includes/header.inc.php';
     <div class="containerQuestion">
 
         <div class="left">
-            <p><?= $question->getId() ?> .</p>
-            <p><?= $question->getCreatedAt() ?></p>
+            <p><?= $question->created_at?></p>
         </div>
 
         <div class="right">

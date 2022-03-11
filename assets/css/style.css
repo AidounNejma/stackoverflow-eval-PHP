@@ -54,6 +54,13 @@
 
 /* Page une seule question */
 
+.tagsOfOneQuestion{
+    background-color: #ffa500;
+    padding: 1%;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
 /* Formulaire */
 .active-amber-textarea.md-form label.active {
     color: #ffa000;

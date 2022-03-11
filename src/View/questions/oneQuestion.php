@@ -13,13 +13,14 @@ require_once './src/View/includes/header.inc.php';
 <div class="col-md-8 m-auto" id="question">
     <h1 class="text-center py-4"><?= $question->getTitle() ?></h1>
     <div class="d-flex justify-content-around py-4">
-        <p>Asked <?= $question->created_at ?></p>
+        <p class="tagsOfOneQuestion">Asked: <?= $question->created_at ?></p>
         <?php foreach ($users as $user) : ?>
             <?php if ($question->user_id == $user->getId()) : ?>
-                <p>By <?= $user->getNickname() ?> </p>
+                <p class="tagsOfOneQuestion">By <?= $user->getNickname() ?> </p>
             <?php endif ?>
         <?php endforeach ?>
-        <p>Answers <?= count($answers) ?></p>
+        <p class="tagsOfOneQuestion">Technology : <?= $question->getTechnology() ?> </p>
+        <p class="tagsOfOneQuestion">Answers <?= count($answers) ?></p>
     </div>
 
     <div class="line"></div>
