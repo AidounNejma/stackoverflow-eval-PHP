@@ -53,7 +53,9 @@ class QuestionModel
         ';
 
         $pdoStatement = $this->pdo->query($sql);
+
         $result = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
+
         return $result;
     }
 
@@ -70,7 +72,7 @@ class QuestionModel
     }
 
     #Pour ajouter une nouvelle question dans la base de données
-    public function create($title, $content, $status, $technology, $createdAt, $updatedAt, $userId)
+    public function create($title, $content, $technology, $userId)
     {
         $sql = 'INSERT INTO ' . self::TABLE_NAME . '
                 (`title`, `content`, `status`, `technology`, `created_at`, `updated_at`, `user_id`)
@@ -81,10 +83,7 @@ class QuestionModel
         $pdoStatement = $this->pdo->prepare($sql);
         $pdoStatement->bindValue(':title', $title, PDO::PARAM_STR);
         $pdoStatement->bindValue(':content', $content, PDO::PARAM_INT);
-        $pdoStatement->bindValue(':status', $status, PDO::PARAM_INT);
         $pdoStatement->bindValue(':technology', $technology, PDO::PARAM_INT);
-        $pdoStatement->bindValue(':created_at', $createdAt, PDO::PARAM_INT);
-        $pdoStatement->bindValue(':updated_at', $updatedAt, PDO::PARAM_INT);
         $pdoStatement->bindValue(':user_id', $userId, PDO::PARAM_INT);
 
 

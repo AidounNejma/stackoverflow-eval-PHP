@@ -14,11 +14,15 @@ class QuestionController extends AbstractController
     {
 
         $questionModel = new QuestionModel();
-        
         $questions = $questionModel->findAll();
 
+        $answerModel = new AnswerModel();
+        $answers = $answerModel->findAll();
+        
+
         $this->render('questions/allQuestions.php', [
-            'questions' => $questions
+            'questions' => $questions,
+            'answers' => $answers
         ]);
 
     }
@@ -38,13 +42,20 @@ class QuestionController extends AbstractController
         $userModel = new UserModel();
         $users =  $userModel->findAll();
 
-
         $this->render('questions/oneQuestion.php', [
             'question' => $question,
             'answers' => $answers,
             "users" => $users,
         ]);
 
+    }
+
+    public function askQuestion()
+    {
+
+        $this->render('questions/askQuestion.php', [
+        
+        ]);
     }
 
 }

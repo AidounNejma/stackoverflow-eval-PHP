@@ -22,7 +22,7 @@ $(document).ready(function () {
             })
                 // si la requête a fonctionnée, j'ajoute le commentaire au dom
                 .done(function (response) {
-                    // je créé une card
+                    // je créé une réponse
                     console.log(response)
                     const newAnswer = `
                 <div class="line"></div>

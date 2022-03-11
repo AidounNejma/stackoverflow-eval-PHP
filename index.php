@@ -48,6 +48,10 @@ class Application
             'controller' => 'UserController',
             'method' => 'logout'
         ],
+        'ask' => [
+            'controller' => 'QuestionController',
+            'method' => 'askQuestion'
+        ],
         'error404' => [
             'controller' => 'ErrorController',
             'method' => 'error404'

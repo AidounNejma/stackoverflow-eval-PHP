@@ -4,13 +4,19 @@ require_once './src/View/includes/header.inc.php';
 
 ?>
 
+<div class="d-flex my-4 px-2">
+    <a href="?page=index"><i class="fas fa-home"></i> Home</a>
+    <p class="px-2"> > </p>
+    <p>Ask A question</p>
+</div>
+
 <div class="col-md-8 m-auto" id="question">
 
     <h1 class="text-center pt-4"><?= $question->getTitle() ?></h1>
 
     <div class="d-flex justify-content-around">
         <p>Asked today <?= $question->getCreatedAt() ?></p>
-        <p>Answers </p>
+        <p>Answers <?= count($answers) ?></p>
     </div>
 
     <div class="line"></div>

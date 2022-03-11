@@ -12,15 +12,16 @@ class AnswerController extends AbstractController
 
 #Créer une réponse
     public function create()
-    {
+    {   
         // Je récupère mes info soumisent en javascript
+        $userId = $_SESSION['id'];
         $answerContent = $_POST['answerContent'];
         $questionId = $_POST['questionId'];
-        $userId = $_SESSION['id'];
-
+        
         // Je récupère les données de mon utilisateur via l'id de la session utilisateur
         $userModel = new UserModel();
         $user = $userModel->findById($userId);
+        $user = $user[0];
 
         // Je crée une réponse
         $answerModel = new AnswerModel();

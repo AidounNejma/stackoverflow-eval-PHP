@@ -48,7 +48,7 @@ class AnswerModel
     public function findByQuestion($id)
     {
         $sql = 'SELECT * FROM ' . self::TABLE_NAME . '
-        WHERE question_id = '. $id;
+        WHERE question_id = '. $id. ' ORDER BY created_at DESC';
         
         $pdoStatement = $this->pdo->query($sql);
         
@@ -84,6 +84,19 @@ class AnswerModel
         }
 
         return $this->pdo->lastInsertId();
+    }
+
+    #Compter le nombre de réponse
+    public function countAnswers($id){
+        
+        $sql = 'SELECT count(*) FROM ' . self::TABLE_NAME . '
+        WHERE question_id = '. $id;
+        
+        $pdoStatement = $this->pdo->query($sql);
+        
+        $result = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
+
+        return $result;
     }
 
     /**
