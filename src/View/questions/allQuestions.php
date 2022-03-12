@@ -16,6 +16,7 @@ require_once './src/View/includes/header.inc.php';
 </div>
 <div class="line my-4"></div>
 <?php foreach ($questions as $question) : ?>
+    <?php if($question->getStatus() == "published") :?>
     <div class="containerQuestion">
 
         <div class="left">
@@ -38,7 +39,7 @@ require_once './src/View/includes/header.inc.php';
 
     </div>
     <div class="line"></div>
-
+<?php endif ?>
 <?php endforeach ?>
 
 <nav aria-label="Page navigation example" class="d-flex justify-content-center">

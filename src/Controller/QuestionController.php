@@ -70,7 +70,7 @@ class QuestionController extends AbstractController
         $question = $question[0];
 
         $answerModel = new AnswerModel();
-        $answers = $answerModel->findByQuestion($id);
+        $answers = $answerModel->findAllWithStatus($id);
 
         $userModel = new UserModel();
         $users =  $userModel->findAll();

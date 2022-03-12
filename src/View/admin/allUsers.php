@@ -33,7 +33,11 @@ require_once './src/View/includes/header.inc.php';
             <td><?= $user->getNickname() ?></td>
             <td><?= $user->getEmail() ?></td>
             <td><?= $user->getGender() ?></td>
-            <td><?= $user->getStatus() ?></td>
+            <?php if($user->getStatus()==0) :?>
+            <td>User</td>
+            <?php elseif($user->getStatus()==1) :?>
+            <td>Admin</td>
+            <?php endif ?>
             <td><?= $user->created_at ?></td>
             <td><?= $user->updated_at ?></td>
             <td><button class="btn btn-primary editUser" data-id="<?= $user->getId()?>"><i class="fas fa-edit"></i></button></td>

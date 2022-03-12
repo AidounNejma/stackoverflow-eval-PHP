@@ -110,6 +110,7 @@ class QuestionModel
         return $result;
     }
 
+
     #Pour supprimer une question par son ID
     public function delete($id){
         

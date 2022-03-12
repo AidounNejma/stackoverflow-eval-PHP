@@ -63,6 +63,24 @@ class AnswerModel
         return $result;
     }
 
+    #Pour trouver toutes les réponses avec le statut publié
+    public function findAllWithStatus($id){
+    
+        $sql = 'SELECT * FROM ' . self::TABLE_NAME . ' WHERE `question_id` = '. $id. ' AND `status` = "published" ORDER BY created_at DESC';
+
+        $pdoStatement = $this->pdo->query($sql);
+        
+        $result = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
+        
+        foreach($result as $r)
+        {
+            $r->setUserId($r->user_id);
+        
+        }
+        
+        return $result;
+    }
+
     #Pour supprimer une reponse par son ID
     public function delete($id){
         
