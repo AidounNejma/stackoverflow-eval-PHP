@@ -17,7 +17,12 @@
 
 <?php elseif($_GET['page'] == "allQuestions") :?>
     <script type="text/javascript" src="./assets/js/adminQuestions.js"></script>
+
+<?php elseif($_GET['page'] == "allAnswers") :?>
+    <script type="text/javascript" src="./assets/js/adminAnswers.js"></script>
     
+<?php elseif($_GET['page'] == "allUsers") :?>
+    <script type="text/javascript" src="./assets/js/adminUsers.js"></script>
 <?php endif ?>
 <!-- Fin Mon script -->
 

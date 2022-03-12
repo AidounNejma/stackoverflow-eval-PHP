@@ -129,6 +129,30 @@ class UserModel
         return $result;
     }
 
+    #Pour supprimer un user par son ID
+    public function delete($id){
+        
+        $sql = 'DELETE FROM ' . self::TABLE_NAME . ' WHERE id = '.$id. ' ';
+
+        $pdoStatement = $this->pdo->query($sql);
+        
+        $result = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
+        
+        return $result;
+    }
+
+    #Pour edit un user par son ID
+    public function update($id, $status, $updated_at){
+        
+        $sql = 'UPDATE ' . self::TABLE_NAME . ' SET status = "'.$status. '", updated_at = "'.$updated_at.'" WHERE id = '.$id. ' ';
+
+        $pdoStatement = $this->pdo->query($sql);
+        
+        $result = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
+        
+        return $result;
+    }
+
 
     /**
      * Get the value of id

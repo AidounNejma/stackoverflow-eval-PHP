@@ -36,8 +36,8 @@ require_once './src/View/includes/header.inc.php';
             <td><?= $user->getStatus() ?></td>
             <td><?= $user->created_at ?></td>
             <td><?= $user->updated_at ?></td>
-            <td><button class="btn btn-primary"><i class="fas fa-edit"></i></button></td>
-            <td><button class="btn btn-danger"><i class="fas fa-eraser"></i></button></td>
+            <td><button class="btn btn-primary editUser" data-id="<?= $user->getId()?>"><i class="fas fa-edit"></i></button></td>
+            <td><button class="btn btn-danger deleteUser" data-id="<?= $user->getId()?>"><i class="fas fa-eraser"></i></button></td>
         </tr>
         <?php endforeach ?>
     </tbody>

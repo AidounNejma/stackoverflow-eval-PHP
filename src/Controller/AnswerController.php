@@ -48,4 +48,33 @@ class AnswerController extends AbstractController
         ]);
     }
 
+    public function deleteAnswer()
+    {
+        $id = $_POST['id'];
+
+        $answerModel = new AnswerModel();
+        $answer = $answerModel->delete($id);
+
+        $this->sendJson([
+            'answer' => $answer
+        ]);
+    }
+
+    public function editAnswer()
+    {
+        $id = $_POST['id'];
+        $status = $_POST['status'];
+
+        #La date d'édition
+        $updated_at = new \DateTime();
+        $updated_at = $updated_at->format('Y-d-m H:i:s');
+
+        $answerModel = new AnswerModel();
+        $answer = $answerModel->update($id, $status, $updated_at);
+
+        $this->sendJson([
+            'answer' => $answer
+        ]);
+    }
+
 }

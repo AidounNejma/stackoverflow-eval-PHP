@@ -92,12 +92,43 @@ class UserController extends AbstractController
         header('location:?page=index');
     }
     
+    #Afficher tous les utilisateurs
     public function allUsersAdmin()
     {
         $userModel = new UserModel();
         $users = $userModel->findAll();
         $this->render('admin/allUsers.php', [
             'users' => $users 
+        ]);
+    }
+
+
+    public function deleteuser()
+    {
+        $id = $_POST['id'];
+
+        $userModel = new userModel();
+        $user = $userModel->delete($id);
+
+        $this->sendJson([
+            'user' => $user
+        ]);
+    }
+
+    public function edituser()
+    {
+        $id = $_POST['id'];
+        $status = $_POST['status'];
+
+        #La date d'édition
+        $updated_at = new \DateTime();
+        $updated_at = $updated_at->format('Y-d-m H:i:s');
+
+        $userModel = new userModel();
+        $user = $userModel->update($id, $status, $updated_at);
+
+        $this->sendJson([
+            'user' => $user
         ]);
     }
 

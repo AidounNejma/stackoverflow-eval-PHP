@@ -63,6 +63,30 @@ class AnswerModel
         return $result;
     }
 
+    #Pour supprimer une reponse par son ID
+    public function delete($id){
+        
+        $sql = 'DELETE FROM ' . self::TABLE_NAME . ' WHERE id = '.$id. ' ';
+
+        $pdoStatement = $this->pdo->query($sql);
+        
+        $result = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
+        
+        return $result;
+    }
+
+    #Pour edit une reponse par son ID
+    public function update($id, $status, $updated_at){
+        
+        $sql = 'UPDATE ' . self::TABLE_NAME . ' SET status = "'.$status. '", updated_at = "'.$updated_at.'" WHERE id = '.$id. ' ';
+
+        $pdoStatement = $this->pdo->query($sql);
+        
+        $result = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
+        
+        return $result;
+    }
+
     #Créer un commentaire
     public function create($content, $userId, $questionId)
     {

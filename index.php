@@ -89,6 +89,22 @@ class Application
             'controller' => 'QuestionController',
             'method' => 'editQuestion'
         ],
+        'deleteAnswer' => [
+            'controller' => 'AnswerController',
+            'method' => 'deleteAnswer'
+        ],
+        'editAnswer' => [
+            'controller' => 'AnswerController',
+            'method' => 'editAnswer'
+        ],
+        'deleteUser' => [
+            'controller' => 'UserController',
+            'method' => 'deleteUser'
+        ],
+        'editUser' => [
+            'controller' => 'UserController',
+            'method' => 'editUser'
+        ],
     ];
 
     const DEFAULT_ROUTE = 'index';

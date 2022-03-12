@@ -36,8 +36,8 @@ require_once './src/View/includes/header.inc.php';
             <td><?= $answer->updated_at ?></td>
             <td><?= $answer->user_id ?></td>
             <td><?= $answer->question_id ?></td>
-            <td><button class="btn btn-primary"><i class="fas fa-edit"></i></button></td>
-            <td><button class="btn btn-danger"><i class="fas fa-eraser"></i></button></td>
+            <td><button class="btn btn-primary editAnswer" data-id="<?= $answer->getId() ?>"><i class="fas fa-edit"></i></button></td>
+            <td><button class="btn btn-danger deleteAnswer" data-id="<?= $answer->getId() ?>"><i class="fas fa-eraser"></i></button></td>
         </tr>
     <?php endforeach ?>
     </tbody>

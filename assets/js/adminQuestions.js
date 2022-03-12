@@ -28,15 +28,13 @@ $(document).ready(function () {
                         console.log(response)
                         Swal.fire(
                             'Deleted!',
-                            'Your file has been deleted.',
+                            'Question has been deleted.',
                             'success'
                         )
                         setTimeout(function () {
                             location.reload();
                         }, 3000);
-
-                    })
-                    ;
+                    });
             }
         })
 
@@ -84,7 +82,13 @@ $(document).ready(function () {
             allowOutsideClick: () => !Swal.isLoading()
         }).then((result) => {
             if (result.isConfirmed) {
-                console.log(result);
+                Swal.fire({
+                    position: 'middle',
+                    icon: 'success',
+                    title: 'Status changed',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
                 setTimeout(function () {
                     location.reload();
                 }, 3000);
