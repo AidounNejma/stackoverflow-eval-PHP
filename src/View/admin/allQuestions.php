@@ -30,8 +30,8 @@ require_once './src/View/includes/header.inc.php';
     <?php foreach($questions as $question) :?>
         <tr>
             <th scope="row"><?= $question->getId() ?></th>
-            <td style="overflow-wrap: ellipsis;"><?= $question->getTitle() ?></td>
-            <td><?= $question->getContent() ?></td>
+            <td><?= strlen($question->getTitle()) > 50 ? substr($question->getTitle(),0,50)."..." : $question->getTitle() ?></td>
+            <td><?= strlen($question->getContent()) > 50 ? substr($question->getContent(),0,50)."..." : $$question->getContent() ?></td>
             <td><?= $question->getTechnology() ?></td>
             <td><?= $question->getStatus() ?></td>
             <td><?= $question->created_at ?></td>

@@ -30,7 +30,7 @@ require_once './src/View/includes/header.inc.php';
     <?php foreach($answers as $answer) :?>
         <tr>
             <th scope="row"><?= $answer->getId() ?></th>
-            <td><?= $answer->getContent() ?></td>
+            <td><?= strlen($answer->getContent()) > 50 ? substr($answer->getContent(),0,50)."..." : $answer->getContent();?></td>
             <td><?= $answer->getStatus() ?></td>
             <td><?= $answer->created_at ?></td>
             <td><?= $answer->updated_at ?></td>
