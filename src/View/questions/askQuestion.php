@@ -9,7 +9,7 @@ require_once './src/View/includes/header.inc.php';
     <p class="px-2"> > </p>
     <p>Ask A question</p>
 </div>
-<?php if (isset($_GET['id'])) : ?>
+<?php if (isset($_SESSION['id'])) : ?>
     <form action="" method="post">
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">

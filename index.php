@@ -127,7 +127,7 @@ class Application
         }
         
 
-        // je vérifie si la clef existe dans la liste des pages autorisées
+        // Je vérifie si la clé existe dans la liste des pages autorisées
         if (isset(self::AUTHORIZED_PAGES[$route_name])) 
         {
             $route = self::AUTHORIZED_PAGES[$route_name];
@@ -145,9 +145,9 @@ class Application
 
     public function run()
     {
-        // je récupère la route demandée dans l'url
-        // si la page n'est pas spécifiée (ex: on arrive pour la première fois sur le site)
-        // on redirige vers la page d'accueil
+        // Je récupère la route demandée dans l'url
+        // Si la page n'est pas spécifiée (ex: on arrive pour la première fois sur le site)
+        // On redirige vers la page d'accueil
         $route_name = $_GET['page'] ?? self::DEFAULT_ROUTE;
 
         // je vérifie si la route demandée existe
