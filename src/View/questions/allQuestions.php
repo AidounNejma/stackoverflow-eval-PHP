@@ -17,7 +17,7 @@ require_once './src/View/includes/header.inc.php';
 <div class="line my-4"></div>
 
 <?php foreach ($questions as $question) : ?>
-    <?php if ($question->getStatus() == "published") : ?>
+    <?php if ($question->getStatus() == "published" || $question->getStatus() == "closed") : ?>
         <div class="containerQuestion">
 
             <div class="left">

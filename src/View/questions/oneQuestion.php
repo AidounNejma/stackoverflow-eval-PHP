@@ -30,7 +30,7 @@ require_once './src/View/includes/header.inc.php';
     </div>
 
     <!-- Formulaire pour poster une réponse -->
-    <?php if (isset($_SESSION['id'])) : ?>
+    <?php if (isset($_SESSION['id']) && $question->getStatus() == "published") : ?>
         <form action="" method="POST" class="formAjax" class="py-4" data-id="<?= $question->getId() ?>">
 
             <div class="md-form amber-textarea active-amber-textarea">
@@ -44,8 +44,11 @@ require_once './src/View/includes/header.inc.php';
             </div>
 
         </form>
+    <?php elseif(isset($_SESSION['id']) && $question->getStatus() == "closed") : ?>
 
-    <?php else : ?>
+        <h5 class="py-4 text-center notificationLoginIn">The thread is closed. You can no longer respond to it.</h5>
+
+    <?php elseif (!isset($_SESSION['id'])) : ?>
 
         <h5 class="py-4 text-center notificationLoginIn">To respond to the question you have to be logged in. You can log in <a href="?page=login">here.</a></h5>
 

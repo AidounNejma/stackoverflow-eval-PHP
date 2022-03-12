@@ -54,6 +54,7 @@ $(document).ready(function () {
             inputOptions: {
                 published: 'published',
                 moderate: 'moderate',
+                closed: 'closed'
             },
             showCancelButton: true,
             confirmButtonText: 'Edit',
