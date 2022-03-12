@@ -9,20 +9,24 @@
 <!-- Fin script Jquery -->
 
 <!-- Mon script -->
-<?php if($_GET['page'] == "question") :?>
-    <script type="text/javascript" src="./assets/js/oneQuestion.js"></script>
+<?php if (isset($_GET['page'])) : ?>
 
-<?php elseif($_GET['page'] == "ask") :?>
-    <script type="text/javascript" src="./assets/js/askQuestion.js"></script>
+    <?php if ($_GET['page'] == "question") : ?>
+        <script type="text/javascript" src="./assets/js/oneQuestion.js"></script>
 
-<?php elseif($_GET['page'] == "allQuestions") :?>
-    <script type="text/javascript" src="./assets/js/adminQuestions.js"></script>
+    <?php elseif ($_GET['page'] == "ask") : ?>
+        <script type="text/javascript" src="./assets/js/askQuestion.js"></script>
 
-<?php elseif($_GET['page'] == "allAnswers") :?>
-    <script type="text/javascript" src="./assets/js/adminAnswers.js"></script>
-    
-<?php elseif($_GET['page'] == "allUsers") :?>
-    <script type="text/javascript" src="./assets/js/adminUsers.js"></script>
+    <?php elseif ($_GET['page'] == "allQuestions") : ?>
+        <script type="text/javascript" src="./assets/js/adminQuestions.js"></script>
+
+    <?php elseif ($_GET['page'] == "allAnswers") : ?>
+        <script type="text/javascript" src="./assets/js/adminAnswers.js"></script>
+
+    <?php elseif ($_GET['page'] == "allUsers") : ?>
+        <script type="text/javascript" src="./assets/js/adminUsers.js"></script>
+    <?php endif ?>
+
 <?php endif ?>
 <!-- Fin Mon script -->
 
