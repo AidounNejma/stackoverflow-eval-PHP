@@ -59,11 +59,19 @@ class QuestionModel
         return $result;
     }
 
-    public function findByPage($page, $search)
+    public function findByPage($page, $search, $tag)
     {
         if($search){
             
             $like = "WHERE `title` LIKE '%" .$search. "%' ";
+        }
+        else{
+            $like = "";
+        }
+
+        if($tag){
+            
+            $like = "WHERE `technology` LIKE '%" .$tag. "%' ";
         }
         else{
             $like = "";
@@ -94,6 +102,30 @@ class QuestionModel
     public function findById($id){
         
         $sql = 'SELECT * FROM ' . self::TABLE_NAME . ' WHERE id = '.$id;
+
+        $pdoStatement = $this->pdo->query($sql);
+        
+        $result = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
+        
+        return $result;
+    }
+
+    #Pour supprimer une question par son ID
+    public function delete($id){
+        
+        $sql = 'DELETE FROM ' . self::TABLE_NAME . ' WHERE id = '.$id. ' ';
+
+        $pdoStatement = $this->pdo->query($sql);
+        
+        $result = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
+        
+        return $result;
+    }
+
+    #Pour edit une question par son ID
+    public function update($id, $status, $updated_at){
+        
+        $sql = 'UPDATE ' . self::TABLE_NAME . ' SET status = "'.$status. '", updated_at = "'.$updated_at.'" WHERE id = '.$id. ' ';
 
         $pdoStatement = $this->pdo->query($sql);
         

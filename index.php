@@ -81,6 +81,14 @@ class Application
             'controller' => 'AnswerController',
             'method' => 'allAnswersAdmin'
         ],
+        'deleteQuestion' => [
+            'controller' => 'QuestionController',
+            'method' => 'deleteQuestion'
+        ],
+        'editQuestion' => [
+            'controller' => 'QuestionController',
+            'method' => 'editQuestion'
+        ],
     ];
 
     const DEFAULT_ROUTE = 'index';

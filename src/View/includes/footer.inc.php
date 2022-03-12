@@ -16,7 +16,7 @@
     <script type="text/javascript" src="./assets/js/askQuestion.js"></script>
 
 <?php elseif($_GET['page'] == "allQuestions") :?>
-    <script type="text/javascript" src="./assets/js/adminQuestion.js"></script>
+    <script type="text/javascript" src="./assets/js/adminQuestions.js"></script>
     
 <?php endif ?>
 <!-- Fin Mon script -->

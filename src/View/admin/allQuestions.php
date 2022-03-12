@@ -18,8 +18,8 @@ require_once './src/View/includes/header.inc.php';
             <th scope="col">id</th>
             <th scope="col">Title</th>
             <th scope="col">Content</th>
-            <th scope="col">Status</th>
             <th scope="col">Technology</th>
+            <th scope="col">Status</th>
             <th scope="col">Created At</th>
             <th scope="col">Updated At</th>
             <th scope="col">Edit</th>
@@ -36,8 +36,8 @@ require_once './src/View/includes/header.inc.php';
             <td><?= $question->getStatus() ?></td>
             <td><?= $question->created_at ?></td>
             <td><?= $question->updated_at ?></td>
-            <td><button class="btn btn-primary"><i class="fas fa-edit"></i></button></td>
-            <td><button class="btn btn-danger"><i class="fas fa-eraser"></i></button></td>
+            <td><button class="btn btn-primary editQuestion" data-id="<?= $question->getId() ?>"><i class="fas fa-edit"></i></button></td>
+            <td><button class="btn btn-danger deleteQuestion" data-id="<?= $question->getId() ?>"><i class="fas fa-eraser"></i></button></td>
         </tr>
     <?php endforeach ?>
     </tbody>

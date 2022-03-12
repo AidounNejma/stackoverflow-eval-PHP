@@ -30,13 +30,22 @@ class QuestionController extends AbstractController
             $search = "";
         }
 
+        #Recherche par tag
+        if(isset($_GET['tag']))
+        {
+            $tag = $_GET['tag'];
+
+        }else{
+            $tag = "";
+        }
+
         if(isset($_POST['search']))
         {
             $search = $_POST['search'];
         }
 
         $questionModel = new QuestionModel();
-        $questions = $questionModel->findByPage($page, $search);
+        $questions = $questionModel->findByPage($page, $search, $tag);
 
         $userModel = new UserModel();
         $users = $userModel->findAll();
@@ -45,7 +54,8 @@ class QuestionController extends AbstractController
             'questions' => $questions,
             'users' => $users,
             'page' => $page,
-            'search' => $search
+            'search' => $search,
+            'tag' => $tag
         ]);
 
     }
@@ -111,4 +121,32 @@ class QuestionController extends AbstractController
         ]);
     }
 
+    public function deleteQuestion()
+    {
+        $id = $_POST['id'];
+
+        $questionModel = new QuestionModel();
+        $question = $questionModel->delete($id);
+
+        $this->sendJson([
+            'question' => $question
+        ]);
+    }
+
+    public function editQuestion()
+    {
+        $id = $_POST['id'];
+        $status = $_POST['status'];
+
+        #La date d'édition
+        $updated_at = new \DateTime();
+        $updated_at = $updated_at->format('Y-d-m H:i:s');
+
+        $questionModel = new QuestionModel();
+        $question = $questionModel->update($id, $status, $updated_at);
+
+        $this->sendJson([
+            'question' => $question
+        ]);
+    }
 }

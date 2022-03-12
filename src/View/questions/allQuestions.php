@@ -26,7 +26,7 @@ require_once './src/View/includes/header.inc.php';
             <a href="?page=question&id=<?= $question->getId() ?>"><?= $question->getTitle() ?></a>
 
             <div class="infoFlex">
-                <a href="" class="btn btn-primary tag"><?= $question->getTechnology() ?></a>
+                <a href="?page=index&tag=<?= $question->getTechnology() ?>" class="btn btn-primary tag"><?= $question->getTechnology() ?></a>
                 <?php foreach ($users as $user) : ?>
                     <?php if ($question->user_id == $user->getId()) : ?>
                         <a href="#"><?= $user->getNickname() ?></a>
@@ -43,8 +43,8 @@ require_once './src/View/includes/header.inc.php';
 
 <nav aria-label="Page navigation example" class="d-flex justify-content-center">
     <ul class="pagination">
-        <li class="page-item"><a class="page-link" href="?page=index&p=<?= $page-1 ?>">Previous</a></li>
-        <li class="page-item"><a class="page-link" href="?page=index&p=<?= $page+1 ?>">Next</a></li>
+        <li class="page-item"><a class="page-link" href="?page=index&p=<?= $page-1 ?>&search=<?= $search?>">Previous</a></li>
+        <li class="page-item"><a class="page-link" href="?page=index&p=<?= $page+1 ?>&search=<?= $search?>">Next</a></li>
     </ul>
 </nav>
 
