@@ -9,6 +9,7 @@
 <!-- Fin script Jquery -->
 
 <!-- Mon script -->
+<!-- On récupère l'url page et en fonction des pages on fait jouer le script JS -->
 <?php if (isset($_GET['page'])) : ?>
 
     <?php if ($_GET['page'] == "question") : ?>

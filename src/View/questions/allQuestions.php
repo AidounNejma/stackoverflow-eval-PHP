@@ -17,6 +17,7 @@ require_once './src/View/includes/header.inc.php';
 <div class="line my-4"></div>
 
 <?php foreach ($questions as $question) : ?>
+    <!-- Si le statut de la question est "publié" ou "clôt" on l'affiche -->
     <?php if ($question->getStatus() == "published" || $question->getStatus() == "closed") : ?>
         <div class="containerQuestion">
 
@@ -30,6 +31,7 @@ require_once './src/View/includes/header.inc.php';
                 <div class="infoFlex">
                     <a href="?page=index&tag=<?= $question->getTechnology() ?>" class="btn btn-primary tag"><?= $question->getTechnology() ?></a>
                     <?php foreach ($users as $user) : ?>
+                        <!-- Si l'id utilisateur de la question correspond à l'id d'un utilisateur alors on affiche son pseudo  -->
                         <?php if ($question->user_id == $user->getId()) : ?>
                             <a href="#"><?= $user->getNickname() ?></a>
                         <?php endif ?>

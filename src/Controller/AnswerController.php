@@ -43,9 +43,13 @@ class AnswerController extends AbstractController
         $answerModel = new AnswerModel();
         
         $answers = $answerModel->findAll();
+
+        #Appel de la fonction getMeta pour récupérer les noms des colonnes en SQL
+        $metas = $answerModel->getMeta();
         
         $this->render('admin/allAnswers.php', [
-            "answers" => $answers
+            "answers" => $answers,
+            "metas" => $metas
         ]);
     }
 

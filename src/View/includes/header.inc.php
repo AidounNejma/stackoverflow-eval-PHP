@@ -16,6 +16,7 @@ function adminAccess()
 }
 
 $admin = adminAccess();
+
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +43,7 @@ $admin = adminAccess();
 <body>
     <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand" href="?page=index"><img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/f/f7/Stack_Overflow_logo.png" alt="stackoverflow image"></a>
-
+    <!-- Si l'admin est connecté alors on affiche les liens-->
         <?php if ($admin == 1) : ?>
             <li class="nav-item dropdown" style="list-style-type: none;">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Admin Dashboard</a>
@@ -53,9 +54,11 @@ $admin = adminAccess();
                 </div>
             </li>
         <?php endif ?>
-        
+        <!--  S'il y a un utilisateur connecté on affiche le lien de déconnexion -->
         <?php if (isset($_SESSION['id'])) : ?>
+
             <a href="?page=logout"><i class="fas fa-sign-out-alt"></i></a>
+        <!-- S'il n'est pas connecté :  -->
         <?php else : ?>
             <div>
                 <a href="?page=register"><i class="fas fa-sign-in-alt"></i> Sign in</a>

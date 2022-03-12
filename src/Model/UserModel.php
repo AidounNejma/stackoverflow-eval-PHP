@@ -34,6 +34,7 @@ class UserModel
         $this->pdo = $database->getPDO();
     }
 
+
     #Trouver tous les utilisateurs
     public function findAll()
     {
@@ -54,6 +55,7 @@ class UserModel
         $result = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
         return $result;
     }
+
 
     #Créer un nouvel utilisateur
     public function create($nickname, $email, $password, $gender, $createdAt)
@@ -80,6 +82,7 @@ class UserModel
         return $this->pdo->lastInsertId();
     }
 
+
     #Vérification pour qu'un utilisateur puisse s'inscrire (pour voir si le nickname ou l'email sont déjà présent en bdd)
     public function verification($email, $nickname)
     {
@@ -101,6 +104,7 @@ class UserModel
         return $result;
     }
 
+
     #Permet la vérification de l'utilisateur pour le connecter
     public function login($email)
     {
@@ -109,7 +113,7 @@ class UserModel
                 ,`password`
                 ,`id`
                 FROM ' . self::TABLE_NAME . '
-                WHERE email = "' . $email .'"';
+                WHERE email = "' . $email . '"';
 
         $pdoStatement = $this->pdo->query($sql);
 
@@ -121,6 +125,7 @@ class UserModel
 
         return $result;
     }
+
 
     #Trouver un utilisateur via l'ID
     public function findById($id)
@@ -134,22 +139,38 @@ class UserModel
         return $result;
     }
 
+
     #Pour supprimer un user par son ID
-    public function delete($id){
-        
-        $sql = 'DELETE FROM ' . self::TABLE_NAME . ' WHERE id = '.$id. ' ';
+    public function delete($id)
+    {
+
+        $sql = 'DELETE FROM ' . self::TABLE_NAME . ' WHERE id = ' . $id . ' ';
 
         $pdoStatement = $this->pdo->query($sql);
-        
+
         $result = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
-        
+
         return $result;
     }
+
 
     #Pour edit un user par son ID
-    public function update($id, $status, $updated_at){
-        
-        $sql = 'UPDATE ' . self::TABLE_NAME . ' SET status = "'.$status. '", updated_at = "'.$updated_at.'" WHERE id = '.$id. ' ';
+    public function update($id, $status, $updated_at)
+    {
+
+        $sql = 'UPDATE ' . self::TABLE_NAME . ' SET status = "' . $status . '", updated_at = "' . $updated_at . '" WHERE id = ' . $id . ' ';
+
+        $pdoStatement = $this->pdo->query($sql);
+
+        $result = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
+
+        return $result;
+    }
+
+    #Récupérer les noms des colonnes
+    public function getMeta()
+    {
+        $sql = 'SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = "' . self::TABLE_NAME . '"';
 
         $pdoStatement = $this->pdo->query($sql);
         
@@ -157,7 +178,6 @@ class UserModel
         
         return $result;
     }
-
 
     /**
      * Get the value of id

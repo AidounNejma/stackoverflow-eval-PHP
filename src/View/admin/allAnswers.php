@@ -15,13 +15,9 @@ require_once './src/View/includes/header.inc.php';
 <table class="table">
     <thead class="thead-dark">
         <tr>
-            <th scope="col">id</th>
-            <th scope="col">Content</th>
-            <th scope="col">Status</th>
-            <th scope="col">Created at</th>
-            <th scope="col">Updated at</th>
-            <th scope="col">User_id</th>
-            <th scope="col">Question id</th>
+            <?php foreach ($metas as $meta) : ?>
+                <th scope="col"><?= $meta->COLUMN_NAME ?></th>
+            <?php endforeach ?>
             <th scope="col">Edit</th>
             <th scope="col">Delete</th>
         </tr>

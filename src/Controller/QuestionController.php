@@ -119,9 +119,13 @@ class QuestionController extends AbstractController
         #Appel de la fonction findAll pour tous les récupérer
         $questions = $questionModel->findAll();
 
+        #Appel de la fonction getMeta pour récupérer les noms des colonnes en SQL
+        $metas = $questionModel->getMeta();
+
         #Envoi de la variable dans la vue
         $this->render('admin/allQuestions.php', [
-            "questions" => $questions
+            "questions" => $questions,
+            "metas" => $metas
         ]);
     }
 

@@ -30,6 +30,7 @@ require_once './src/View/includes/header.inc.php';
     </div>
 
     <!-- Formulaire pour poster une réponse -->
+    <!-- Si l'utilisateur et connecté et que le statut de la question est "publié" -->
     <?php if (isset($_SESSION['id']) && $question->getStatus() == "published") : ?>
         <form action="" method="POST" class="formAjax" class="py-4" data-id="<?= $question->getId() ?>">
 
@@ -44,10 +45,12 @@ require_once './src/View/includes/header.inc.php';
             </div>
 
         </form>
+    <!-- Si l'utilisateur et connecté et que le statut de la question est "clôt" -->
     <?php elseif(isset($_SESSION['id']) && $question->getStatus() == "closed") : ?>
 
         <h5 class="py-4 text-center notificationLoginIn">The thread is closed. You can no longer respond to it.</h5>
-
+    
+    <!-- Si l'utilisateur et déconnecté" -->
     <?php elseif (!isset($_SESSION['id'])) : ?>
 
         <h5 class="py-4 text-center notificationLoginIn">To respond to the question you have to be logged in. You can log in <a href="?page=login">here.</a></h5>

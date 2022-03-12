@@ -96,9 +96,18 @@ class UserController extends AbstractController
     public function allUsersAdmin()
     {
         $userModel = new UserModel();
+
         $users = $userModel->findAll();
+
+        #Appel de la fonction getMeta pour récupérer les noms des colonnes en SQL
+        $metas = $userModel->getMeta();
+
+        #Couper l'array pour ne récupérer que la partie qui m'intéresse
+        $metas = array_slice($metas, 9, 18);
+
         $this->render('admin/allUsers.php', [
-            'users' => $users 
+            'users' => $users,
+            "metas" => $metas
         ]);
     }
 

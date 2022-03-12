@@ -141,6 +141,18 @@ class AnswerModel
         return $result;
     }
 
+    #Récupérer les noms des colonnes
+    public function getMeta()
+    {
+        $sql = 'SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = "' . self::TABLE_NAME . '"';
+
+        $pdoStatement = $this->pdo->query($sql);
+        
+        $result = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
+        
+        return $result;
+    }
+
     /**
      * Get the value of id
      */ 

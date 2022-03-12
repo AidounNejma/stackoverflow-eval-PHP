@@ -9,6 +9,8 @@ require_once './src/View/includes/header.inc.php';
     <p class="px-2"> > </p>
     <p>Ask A question</p>
 </div>
+
+<!-- Si l'utilisateur est connecté -->
 <?php if (isset($_SESSION['id'])) : ?>
     <form action="" method="post">
         <div class="container py-5 h-100">
@@ -41,6 +43,7 @@ require_once './src/View/includes/header.inc.php';
             </div>
         </div>
     </form>
+    <!-- Si l'utilisateur est déconnecté on affiche un message -->
 <?php else : ?>
     <h5 class="py-4 text-center notificationLoginIn">To ask a question you have to be logged in. You can log in <a href="?page=login">here.</a></h5>
 <?php endif ?>
