@@ -37,6 +37,7 @@ class AnswerController extends AbstractController
         ]);
     }
 
+    #Afficher toutes les réponses sur la vue Admin
     public function allAnswersAdmin()
     {
         $answerModel = new AnswerModel();
@@ -48,6 +49,7 @@ class AnswerController extends AbstractController
         ]);
     }
 
+    #Suppression d'une question (Admin)
     public function deleteAnswer()
     {
         $id = $_POST['id'];
@@ -60,6 +62,7 @@ class AnswerController extends AbstractController
         ]);
     }
 
+    #Edition d'un réponse (Admin)
     public function editAnswer()
     {
         $id = $_POST['id'];

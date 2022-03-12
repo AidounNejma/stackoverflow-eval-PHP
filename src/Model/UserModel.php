@@ -34,6 +34,7 @@ class UserModel
         $this->pdo = $database->getPDO();
     }
 
+    #Trouver tous les utilisateurs
     public function findAll()
     {
         $sql = 'SELECT
@@ -54,6 +55,7 @@ class UserModel
         return $result;
     }
 
+    #Créer un nouvel utilisateur
     public function create($nickname, $email, $password, $gender, $createdAt)
     {
         $sql = 'INSERT INTO ' . self::TABLE_NAME . '
@@ -78,6 +80,7 @@ class UserModel
         return $this->pdo->lastInsertId();
     }
 
+    #Vérification pour qu'un utilisateur puisse s'inscrire (pour voir si le nickname ou l'email sont déjà présent en bdd)
     public function verification($email, $nickname)
     {
 
@@ -98,6 +101,7 @@ class UserModel
         return $result;
     }
 
+    #Permet la vérification de l'utilisateur pour le connecter
     public function login($email)
     {
         $sql = 'SELECT
@@ -118,6 +122,7 @@ class UserModel
         return $result;
     }
 
+    #Trouver un utilisateur via l'ID
     public function findById($id)
     {
         $sql = 'SELECT * FROM ' . self::TABLE_NAME . ' WHERE id = ' . $id;

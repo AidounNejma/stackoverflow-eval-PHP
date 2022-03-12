@@ -105,7 +105,7 @@ class AnswerModel
         return $result;
     }
 
-    #Créer un commentaire
+    #Créer une réponse
     public function create($content, $userId, $questionId)
     {
         $sql = 'INSERT INTO ' . self::TABLE_NAME . '

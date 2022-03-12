@@ -59,6 +59,7 @@ class QuestionModel
         return $result;
     }
 
+    #Permet de faire la recherche, la pagination et le filtre par tag
     public function findByPage($page, $search, $tag)
     {
         if($search){

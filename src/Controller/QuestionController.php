@@ -110,17 +110,22 @@ class QuestionController extends AbstractController
             ]);
     }
     
+    #Fonction pour afficher toutes les questions sur la vue Admin
     public function allQuestionsAdmin()
     {
+        #Instanciation de mon objet User
         $questionModel = new QuestionModel();
         
+        #Appel de la fonction findAll pour tous les récupérer
         $questions = $questionModel->findAll();
 
+        #Envoi de la variable dans la vue
         $this->render('admin/allQuestions.php', [
             "questions" => $questions
         ]);
     }
 
+    #Fonction de suppresion de la question (Admin)
     public function deleteQuestion()
     {
         $id = $_POST['id'];
@@ -133,6 +138,7 @@ class QuestionController extends AbstractController
         ]);
     }
 
+    #Fonction d'édition de la question (Admin)
     public function editQuestion()
     {
         $id = $_POST['id'];

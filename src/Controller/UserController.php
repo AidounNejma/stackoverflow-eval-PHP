@@ -105,11 +105,16 @@ class UserController extends AbstractController
 
     public function deleteuser()
     {
+        #Récupération de l'id via l'Ajax
         $id = $_POST['id'];
 
+        #Instanciation de mon objet User
         $userModel = new userModel();
+
+        #Appel de la fonction delete
         $user = $userModel->delete($id);
 
+        #Envoi de User à Jquery
         $this->sendJson([
             'user' => $user
         ]);
@@ -117,6 +122,7 @@ class UserController extends AbstractController
 
     public function edituser()
     {
+        #Récupération de ma data passée dans l'Ajax
         $id = $_POST['id'];
         $status = $_POST['status'];
 
@@ -124,9 +130,13 @@ class UserController extends AbstractController
         $updated_at = new \DateTime();
         $updated_at = $updated_at->format('Y-d-m H:i:s');
 
+        #Instanciation de mon objet User
         $userModel = new userModel();
+
+        #Appel de ma fonction update
         $user = $userModel->update($id, $status, $updated_at);
 
+        #Envoi de user dans le JS
         $this->sendJson([
             'user' => $user
         ]);
